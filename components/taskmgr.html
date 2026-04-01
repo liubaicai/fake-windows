@@ -19,53 +19,220 @@
   <!-- 进程 tab -->
   <div class="taskmgr-body" id="taskmgr-processes">
     <div class="taskmgr-header">
-      <span style="flex:2">名称</span><span style="flex:1">CPU</span><span style="flex:1">内存</span><span style="flex:1">磁盘</span><span style="flex:1">网络</span>
+      <span class="th-col" style="flex:2">名称 <span class="th-arrow">▼</span></span><span class="th-col th-usage-bg" style="flex:1" data-usage="12">CPU <span class="th-arrow">▼</span></span><span class="th-col th-usage-bg" style="flex:1" data-usage="58">内存 <span class="th-arrow">▼</span></span><span class="th-col th-usage-bg" style="flex:1" data-usage="2">磁盘 <span class="th-arrow">▼</span></span><span class="th-col th-usage-bg" style="flex:1" data-usage="0">网络 <span class="th-arrow">▼</span></span>
     </div>
-    <div class="taskmgr-section">&#9660; 应用 (3)</div>
-    <div class="taskmgr-process"><span class="tp-name"><img src="icons/file-manager.svg" alt="">文件资源管理器</span><span class="tp-cpu">0.1%</span><span class="tp-mem">68.2 MB</span><span class="tp-disk">0.1 MB/秒</span><span class="tp-net">0 Mbps</span></div>
-    <div class="taskmgr-process"><span class="tp-name"><img src="icons/microsoft-edge.svg" alt="">Microsoft Edge</span><span class="tp-cpu med">4.8%</span><span class="tp-mem med">312.5 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0.2 Mbps</span></div>
-    <div class="taskmgr-process"><span class="tp-name"><img src="icons/terminal.svg" alt="">Windows PowerShell</span><span class="tp-cpu">0.3%</span><span class="tp-mem">42.1 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
-    <div class="taskmgr-section">&#9660; 后台进程 (42)</div>
-    <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Application Frame Host</span><span class="tp-cpu">0%</span><span class="tp-mem">12.8 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
-    <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">COM Surrogate</span><span class="tp-cpu">0%</span><span class="tp-mem">3.4 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
-    <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Cortana</span><span class="tp-cpu">0%</span><span class="tp-mem">58.2 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
-    <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Desktop Window Manager</span><span class="tp-cpu high">8.2%</span><span class="tp-mem med">156.3 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
-    <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Microsoft Windows Search</span><span class="tp-cpu">0.5%</span><span class="tp-mem">88.7 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
-    <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Runtime Broker</span><span class="tp-cpu">0%</span><span class="tp-mem">22.1 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
-    <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Security Health Service</span><span class="tp-cpu">0%</span><span class="tp-mem">8.5 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
-    <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Shell Infrastructure Host</span><span class="tp-cpu">0.1%</span><span class="tp-mem">18.6 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
-    <div class="taskmgr-section">&#9660; Windows 进程 (38)</div>
-    <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Client Server Runtime Process</span><span class="tp-cpu">0%</span><span class="tp-mem">1.8 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
-    <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Service Host: Local System (12)</span><span class="tp-cpu">0.3%</span><span class="tp-mem">24.5 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
-    <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">System</span><span class="tp-cpu">0.1%</span><span class="tp-mem">0.1 MB</span><span class="tp-disk">0.1 MB/秒</span><span class="tp-net">0 Mbps</span></div>
-    <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Windows Explorer</span><span class="tp-cpu med">2.1%</span><span class="tp-mem">95.4 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
+    <div class="taskmgr-list">
+      <div class="taskmgr-section">&#9660; 应用 (3)</div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/file-manager.svg" alt="">文件资源管理器</span><span class="tp-cpu">0.1%</span><span class="tp-mem">68.2 MB</span><span class="tp-disk">0.1 MB/秒</span><span class="tp-net">0 Mbps</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/microsoft-edge.svg" alt="">Microsoft Edge</span><span class="tp-cpu med">4.8%</span><span class="tp-mem med">312.5 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0.2 Mbps</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/terminal.svg" alt="">Windows PowerShell</span><span class="tp-cpu">0.3%</span><span class="tp-mem">42.1 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
+      <div class="taskmgr-section">&#9660; 后台进程 (42)</div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Application Frame Host</span><span class="tp-cpu">0%</span><span class="tp-mem">12.8 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">COM Surrogate</span><span class="tp-cpu">0%</span><span class="tp-mem">3.4 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Cortana</span><span class="tp-cpu">0%</span><span class="tp-mem">58.2 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Desktop Window Manager</span><span class="tp-cpu high">8.2%</span><span class="tp-mem med">156.3 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Microsoft Store</span><span class="tp-cpu">0%</span><span class="tp-mem">26.4 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Microsoft Windows Search</span><span class="tp-cpu">0.5%</span><span class="tp-mem">88.7 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Runtime Broker</span><span class="tp-cpu">0%</span><span class="tp-mem">22.1 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Security Health Service</span><span class="tp-cpu">0%</span><span class="tp-mem">8.5 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Shell Infrastructure Host</span><span class="tp-cpu">0.1%</span><span class="tp-mem">18.6 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Windows Security</span><span class="tp-cpu">0%</span><span class="tp-mem">5.2 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
+      <div class="taskmgr-section">&#9660; Windows 进程 (38)</div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Client Server Runtime Process</span><span class="tp-cpu">0%</span><span class="tp-mem">1.8 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Service Host: Local System (12)</span><span class="tp-cpu">0.3%</span><span class="tp-mem">24.5 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">System</span><span class="tp-cpu">0.1%</span><span class="tp-mem">0.1 MB</span><span class="tp-disk">0.1 MB/秒</span><span class="tp-net">0 Mbps</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Windows Explorer</span><span class="tp-cpu med">2.1%</span><span class="tp-mem">95.4 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Windows Logon Application</span><span class="tp-cpu">0%</span><span class="tp-mem">3.2 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
+    </div>
+    <div class="taskmgr-bottom-bar"><button class="taskmgr-end-btn">结束任务</button></div>
   </div>
   <!-- 性能 tab -->
   <div class="taskmgr-perf" id="taskmgr-performance" style="display:none">
-    <div class="perf-card">
-      <div class="perf-card-title">CPU</div>
-      <div class="perf-card-value">12%</div>
-      <div class="perf-graph" id="cpu-graph"></div>
-      <div class="perf-info">基本速度: 3.60 GHz<br>插槽: 1<br>内核: 8<br>逻辑处理器: 16<br>正常运行时间: 2:14:36:08</div>
+    <div class="perf-sidebar">
+      <div class="perf-sidebar-item active" data-perf="cpu">
+        <div class="perf-sidebar-label">CPU</div>
+        <div class="perf-sidebar-mini-graph" id="cpu-mini"></div>
+        <div class="perf-sidebar-val">12%</div>
+      </div>
+      <div class="perf-sidebar-item" data-perf="mem">
+        <div class="perf-sidebar-label">内存</div>
+        <div class="perf-sidebar-mini-graph" id="mem-mini"></div>
+        <div class="perf-sidebar-val">9.3/16.0 GB (58%)</div>
+      </div>
+      <div class="perf-sidebar-item" data-perf="disk">
+        <div class="perf-sidebar-label">磁盘 0 (C:)</div>
+        <div class="perf-sidebar-mini-graph" id="disk-mini"></div>
+        <div class="perf-sidebar-val">2%</div>
+      </div>
+      <div class="perf-sidebar-item" data-perf="net">
+        <div class="perf-sidebar-label">以太网</div>
+        <div class="perf-sidebar-mini-graph" id="net-mini"></div>
+        <div class="perf-sidebar-val">S: 0.2 R: 1.5 Kbps</div>
+      </div>
     </div>
-    <div class="perf-card">
-      <div class="perf-card-title">内存</div>
-      <div class="perf-card-value">9.3/16.0 GB (58%)</div>
-      <div class="perf-graph" id="mem-graph"></div>
-      <div class="perf-info">速度: 3200 MHz<br>已用插槽: 2/4<br>硬件保留: 283 MB<br>已提交: 12.8/24.0 GB<br>已缓存: 4.2 GB</div>
+    <div class="perf-detail">
+      <div class="perf-detail-panel active" data-perf-panel="cpu">
+        <div class="perf-detail-header"><span class="perf-detail-type">CPU</span><span class="perf-detail-name">Intel(R) Core(TM) i7-10700K CPU @ 3.80GHz</span></div>
+        <div class="perf-detail-graph-area">
+          <div class="perf-graph-label-row"><span class="perf-graph-label-l">% 利用率</span><span class="perf-graph-label-r">显示 60 秒</span></div>
+          <div class="perf-graph" id="cpu-graph"></div>
+        </div>
+        <div class="perf-detail-stats">
+          <div class="perf-detail-bigval">12%</div>
+          <div class="perf-detail-grid">
+            <div class="perf-stat"><span class="perf-stat-label">基本速度:</span><span class="perf-stat-val">3.80 GHz</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">插槽:</span><span class="perf-stat-val">1</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">内核:</span><span class="perf-stat-val">8</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">逻辑处理器:</span><span class="perf-stat-val">16</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">虚拟化:</span><span class="perf-stat-val">已启用</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">L1 缓存:</span><span class="perf-stat-val">512 KB</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">L2 缓存:</span><span class="perf-stat-val">2.0 MB</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">L3 缓存:</span><span class="perf-stat-val">16.0 MB</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">进程:</span><span class="perf-stat-val">83</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">线程:</span><span class="perf-stat-val">1,247</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">句柄:</span><span class="perf-stat-val">68,432</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">正常运行时间:</span><span class="perf-stat-val">2:14:36:08</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="perf-detail-panel" data-perf-panel="mem">
+        <div class="perf-detail-header"><span class="perf-detail-type">内存</span><span class="perf-detail-name">16.0 GB DDR4</span></div>
+        <div class="perf-detail-graph-area">
+          <div class="perf-graph-label-row"><span class="perf-graph-label-l">内存使用量</span><span class="perf-graph-label-r">显示 60 秒</span></div>
+          <div class="perf-graph" id="mem-graph"></div>
+        </div>
+        <div class="perf-detail-stats">
+          <div class="perf-detail-bigval">9.3 GB</div>
+          <div class="perf-detail-grid">
+            <div class="perf-stat"><span class="perf-stat-label">正在使用(已压缩):</span><span class="perf-stat-val">9.3 GB (184 MB)</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">可用:</span><span class="perf-stat-val">6.4 GB</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">已提交:</span><span class="perf-stat-val">12.8/24.0 GB</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">已缓存:</span><span class="perf-stat-val">4.2 GB</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">分页缓冲池:</span><span class="perf-stat-val">428 MB</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">非分页缓冲池:</span><span class="perf-stat-val">216 MB</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">速度:</span><span class="perf-stat-val">3200 MHz</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">已用插槽:</span><span class="perf-stat-val">2/4</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">外形规格:</span><span class="perf-stat-val">DIMM</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">硬件保留:</span><span class="perf-stat-val">283 MB</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="perf-detail-panel" data-perf-panel="disk">
+        <div class="perf-detail-header"><span class="perf-detail-type">磁盘 0 (C:)</span><span class="perf-detail-name">Samsung SSD 970 EVO Plus 500GB</span></div>
+        <div class="perf-detail-graph-area">
+          <div class="perf-graph-label-row"><span class="perf-graph-label-l">活动时间</span><span class="perf-graph-label-r">显示 60 秒</span></div>
+          <div class="perf-graph" id="disk-graph"></div>
+        </div>
+        <div class="perf-detail-stats">
+          <div class="perf-detail-bigval">2%</div>
+          <div class="perf-detail-grid">
+            <div class="perf-stat"><span class="perf-stat-label">活动时间:</span><span class="perf-stat-val">2%</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">平均响应时间:</span><span class="perf-stat-val">1.2 毫秒</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">读取速度:</span><span class="perf-stat-val">0 KB/秒</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">写入速度:</span><span class="perf-stat-val">48 KB/秒</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">容量:</span><span class="perf-stat-val">476 GB</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">已格式化:</span><span class="perf-stat-val">476 GB</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">系统盘:</span><span class="perf-stat-val">是</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">类型:</span><span class="perf-stat-val">SSD</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="perf-detail-panel" data-perf-panel="net">
+        <div class="perf-detail-header"><span class="perf-detail-type">以太网</span><span class="perf-detail-name">Intel(R) Ethernet Connection I219-V</span></div>
+        <div class="perf-detail-graph-area">
+          <div class="perf-graph-label-row"><span class="perf-graph-label-l">吞吐量</span><span class="perf-graph-label-r">显示 60 秒</span></div>
+          <div class="perf-graph" id="net-graph"></div>
+        </div>
+        <div class="perf-detail-stats">
+          <div class="perf-detail-bigval">1.7 Kbps</div>
+          <div class="perf-detail-grid">
+            <div class="perf-stat"><span class="perf-stat-label">发送:</span><span class="perf-stat-val">0.2 Kbps</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">接收:</span><span class="perf-stat-val">1.5 Kbps</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">适配器名称:</span><span class="perf-stat-val">Intel I219-V</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">连接类型:</span><span class="perf-stat-val">以太网</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">IPv4 地址:</span><span class="perf-stat-val">192.168.1.100</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">IPv6 地址:</span><span class="perf-stat-val">fe80::1</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">链接速度:</span><span class="perf-stat-val">1.0 Gbps</span></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="perf-card">
-      <div class="perf-card-title">磁盘 0 (C:)</div>
-      <div class="perf-card-value">活动时间 2%</div>
-      <div class="perf-graph" id="disk-graph"></div>
-      <div class="perf-info">容量: 476 GB<br>已格式化: 476 GB<br>系统盘: 是<br>类型: SSD</div>
+  </div>
+  <!-- 应用历史记录 tab -->
+  <div class="taskmgr-body taskmgr-tab-content" id="taskmgr-apphistory" style="display:none">
+    <div class="taskmgr-header">
+      <span class="th-col" style="flex:2">名称</span><span class="th-col" style="flex:1">CPU 时间</span><span class="th-col" style="flex:1">网络</span><span class="th-col" style="flex:1">按流量计费的网络</span>
     </div>
-    <div class="perf-card">
-      <div class="perf-card-title">以太网</div>
-      <div class="perf-card-value">发送: 0.2 Kbps &nbsp; 接收: 1.5 Kbps</div>
-      <div class="perf-graph" id="net-graph"></div>
-      <div class="perf-info">适配器名称: Intel I219-V<br>连接类型: 以太网<br>IPv4 地址: 192.168.1.100</div>
+    <div class="taskmgr-list">
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/microsoft-edge.svg" alt="">Microsoft Edge</span><span class="tp-cpu">2:15:30</span><span class="tp-mem">856.2 MB</span><span class="tp-disk">0 MB</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Cortana</span><span class="tp-cpu">0:03:12</span><span class="tp-mem">12.4 MB</span><span class="tp-disk">0 MB</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Microsoft Store</span><span class="tp-cpu">0:01:45</span><span class="tp-mem">24.6 MB</span><span class="tp-disk">0 MB</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Windows 安全中心</span><span class="tp-cpu">0:00:48</span><span class="tp-mem">1.2 MB</span><span class="tp-disk">0 MB</span></div>
     </div>
+    <div class="taskmgr-apphistory-footer"><a class="taskmgr-link">删除使用历史记录</a></div>
+  </div>
+  <!-- 启动 tab -->
+  <div class="taskmgr-body taskmgr-tab-content" id="taskmgr-startup" style="display:none">
+    <div class="taskmgr-header">
+      <span class="th-col" style="flex:2">名称</span><span class="th-col" style="flex:1">发布者</span><span class="th-col" style="flex:1">状态</span><span class="th-col" style="flex:1">启动影响</span>
+    </div>
+    <div class="taskmgr-list">
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/microsoft-edge.svg" alt="">Microsoft Edge</span><span class="tp-cpu">Microsoft Corporation</span><span class="tp-mem tp-status-enabled">已启用</span><span class="tp-disk">高</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Microsoft OneDrive</span><span class="tp-cpu">Microsoft Corporation</span><span class="tp-mem tp-status-enabled">已启用</span><span class="tp-disk">高</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Windows Security</span><span class="tp-cpu">Microsoft Corporation</span><span class="tp-mem tp-status-enabled">已启用</span><span class="tp-disk">低</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Realtek HD Audio Manager</span><span class="tp-cpu">Realtek</span><span class="tp-mem tp-status-disabled">已禁用</span><span class="tp-disk">低</span></div>
+    </div>
+    <div class="taskmgr-bottom-bar"><button class="taskmgr-end-btn">禁用</button></div>
+  </div>
+  <!-- 用户 tab -->
+  <div class="taskmgr-body taskmgr-tab-content" id="taskmgr-users" style="display:none">
+    <div class="taskmgr-header">
+      <span class="th-col" style="flex:2">用户</span><span class="th-col" style="flex:1">状态</span><span class="th-col" style="flex:1">CPU</span><span class="th-col" style="flex:1">内存</span><span class="th-col" style="flex:1">磁盘</span><span class="th-col" style="flex:1">网络</span>
+    </div>
+    <div class="taskmgr-list">
+      <div class="taskmgr-process taskmgr-user-row"><span class="tp-name"><svg viewBox="0 0 16 16" width="16" height="16"><circle cx="8" cy="6" r="3.5" fill="none" stroke="#0078d4" stroke-width="1.3"/><path d="M2 15 C2 11 5 9 8 9 C11 9 14 11 14 15" fill="none" stroke="#0078d4" stroke-width="1.3"/></svg>用户</span><span class="tp-cpu">活动</span><span class="tp-mem">12%</span><span class="tp-disk">1,245 MB</span><span class="tp-net">2%</span><span class="tp-net">0%</span></div>
+    </div>
+    <div class="taskmgr-bottom-bar"><button class="taskmgr-end-btn">断开连接</button></div>
+  </div>
+  <!-- 详细信息 tab -->
+  <div class="taskmgr-body taskmgr-tab-content" id="taskmgr-details" style="display:none">
+    <div class="taskmgr-header taskmgr-details-header">
+      <span class="th-col" style="flex:2">名称</span><span class="th-col" style="flex:1">PID</span><span class="th-col" style="flex:1">状态</span><span class="th-col" style="flex:1">用户名</span><span class="th-col" style="flex:1">CPU</span><span class="th-col" style="flex:1">内存(专用工作集)</span>
+    </div>
+    <div class="taskmgr-list">
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">csrss.exe</span><span class="tp-cpu">556</span><span class="tp-mem">正在运行</span><span class="tp-disk">SYSTEM</span><span class="tp-net">0%</span><span class="tp-net">4,832 K</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">dwm.exe</span><span class="tp-cpu">1084</span><span class="tp-mem">正在运行</span><span class="tp-disk">DWM-1</span><span class="tp-net med">8.2%</span><span class="tp-net">152,480 K</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/file-manager.svg" alt="">explorer.exe</span><span class="tp-cpu">3472</span><span class="tp-mem">正在运行</span><span class="tp-disk">用户</span><span class="tp-net med">2.1%</span><span class="tp-net">97,640 K</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">lsass.exe</span><span class="tp-cpu">724</span><span class="tp-mem">正在运行</span><span class="tp-disk">SYSTEM</span><span class="tp-net">0%</span><span class="tp-net">12,288 K</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/microsoft-edge.svg" alt="">msedge.exe</span><span class="tp-cpu">5680</span><span class="tp-mem">正在运行</span><span class="tp-disk">用户</span><span class="tp-net">4.8%</span><span class="tp-net">320,000 K</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/terminal.svg" alt="">powershell.exe</span><span class="tp-cpu">8924</span><span class="tp-mem">正在运行</span><span class="tp-disk">用户</span><span class="tp-net">0.3%</span><span class="tp-net">43,120 K</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">services.exe</span><span class="tp-cpu">672</span><span class="tp-mem">正在运行</span><span class="tp-disk">SYSTEM</span><span class="tp-net">0%</span><span class="tp-net">8,960 K</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">svchost.exe</span><span class="tp-cpu">892</span><span class="tp-mem">正在运行</span><span class="tp-disk">SYSTEM</span><span class="tp-net">0.1%</span><span class="tp-net">33,600 K</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">System</span><span class="tp-cpu">4</span><span class="tp-mem">正在运行</span><span class="tp-disk">SYSTEM</span><span class="tp-net">0.1%</span><span class="tp-net">128 K</span></div>
+      <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">taskmgr.exe</span><span class="tp-cpu">10256</span><span class="tp-mem">正在运行</span><span class="tp-disk">用户</span><span class="tp-net">1.2%</span><span class="tp-net">28,416 K</span></div>
+    </div>
+    <div class="taskmgr-bottom-bar"><button class="taskmgr-end-btn">结束进程</button></div>
+  </div>
+  <!-- 服务 tab -->
+  <div class="taskmgr-body taskmgr-tab-content" id="taskmgr-services" style="display:none">
+    <div class="taskmgr-header">
+      <span class="th-col" style="flex:2">名称</span><span class="th-col" style="flex:2">描述</span><span class="th-col" style="flex:1">状态</span><span class="th-col" style="flex:1">组</span>
+    </div>
+    <div class="taskmgr-list">
+      <div class="taskmgr-process"><span class="tp-name">AdobeARMservice</span><span class="tp-name" style="flex:2">Adobe Acrobat Update Service</span><span class="tp-cpu svc-running">正在运行</span><span class="tp-mem">N/A</span></div>
+      <div class="taskmgr-process"><span class="tp-name">AudioSrv</span><span class="tp-name" style="flex:2">Windows Audio</span><span class="tp-cpu svc-running">正在运行</span><span class="tp-mem">AudioGroup</span></div>
+      <div class="taskmgr-process"><span class="tp-name">BrokerInfrastructure</span><span class="tp-name" style="flex:2">后台任务基础结构服务</span><span class="tp-cpu svc-running">正在运行</span><span class="tp-mem">N/A</span></div>
+      <div class="taskmgr-process"><span class="tp-name">CryptSvc</span><span class="tp-name" style="flex:2">Cryptographic Services</span><span class="tp-cpu svc-running">正在运行</span><span class="tp-mem">NetworkService</span></div>
+      <div class="taskmgr-process"><span class="tp-name">Dhcp</span><span class="tp-name" style="flex:2">DHCP Client</span><span class="tp-cpu svc-running">正在运行</span><span class="tp-mem">LocalService</span></div>
+      <div class="taskmgr-process"><span class="tp-name">DiagTrack</span><span class="tp-name" style="flex:2">已连接用户体验和遥测</span><span class="tp-cpu svc-running">正在运行</span><span class="tp-mem">N/A</span></div>
+      <div class="taskmgr-process"><span class="tp-name">Dnscache</span><span class="tp-name" style="flex:2">DNS Client</span><span class="tp-cpu svc-running">正在运行</span><span class="tp-mem">NetworkService</span></div>
+      <div class="taskmgr-process"><span class="tp-name">EventLog</span><span class="tp-name" style="flex:2">Windows Event Log</span><span class="tp-cpu svc-running">正在运行</span><span class="tp-mem">LocalService</span></div>
+      <div class="taskmgr-process"><span class="tp-name">Fax</span><span class="tp-name" style="flex:2">Fax</span><span class="tp-cpu svc-stopped">已停止</span><span class="tp-mem">N/A</span></div>
+      <div class="taskmgr-process"><span class="tp-name">LanmanServer</span><span class="tp-name" style="flex:2">Server</span><span class="tp-cpu svc-running">正在运行</span><span class="tp-mem">N/A</span></div>
+      <div class="taskmgr-process"><span class="tp-name">Spooler</span><span class="tp-name" style="flex:2">Print Spooler</span><span class="tp-cpu svc-running">正在运行</span><span class="tp-mem">N/A</span></div>
+      <div class="taskmgr-process"><span class="tp-name">WSearch</span><span class="tp-name" style="flex:2">Windows Search</span><span class="tp-cpu svc-running">正在运行</span><span class="tp-mem">LocalSystem</span></div>
+    </div>
+    <div class="taskmgr-bottom-bar"><a class="taskmgr-link">打开服务</a></div>
   </div>
   <div class="taskmgr-statusbar"><span>进程: 83</span><span>CPU 使用率: 12%</span><span>物理内存: 58%</span><span>磁盘: 2%</span><span>网络: 0%</span></div>
 </div>

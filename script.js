@@ -362,7 +362,7 @@
     }),
   );
   $$(
-    ".win-titlebar,.settings-titlebar,.terminal-titlebar,.taskmgr-titlebar,.edge-titlebar",
+    ".win-titlebar,.settings-titlebar,.terminal-titlebar,.terminal-tab-bar,.taskmgr-titlebar,.edge-titlebar",
   ).forEach((tb) => {
     tb.addEventListener("dblclick", function (e) {
       if (e.target.closest(".win-btn")) return;
@@ -394,7 +394,7 @@
     dwX,
     dwY;
   $$(
-    ".win-titlebar,.settings-titlebar,.terminal-titlebar,.taskmgr-titlebar,.edge-titlebar",
+    ".win-titlebar,.settings-titlebar,.terminal-titlebar,.terminal-tab-bar,.taskmgr-titlebar,.edge-titlebar",
   ).forEach((tb) => {
     tb.addEventListener("mousedown", function (e) {
       if (e.target.closest(".win-btn")) return;
@@ -767,10 +767,37 @@
       // Show/hide tab content
       const processes = $("taskmgr-processes");
       const performance = $("taskmgr-performance");
+      const apphistory = $("taskmgr-apphistory");
+      const startup = $("taskmgr-startup");
+      const users = $("taskmgr-users");
+      const details = $("taskmgr-details");
+      const services = $("taskmgr-services");
       if (processes)
         processes.style.display = tabName === "processes" ? "" : "none";
       if (performance)
         performance.style.display = tabName === "performance" ? "" : "none";
+      if (apphistory)
+        apphistory.style.display = tabName === "apphistory" ? "" : "none";
+      if (startup)
+        startup.style.display = tabName === "startup" ? "" : "none";
+      if (users)
+        users.style.display = tabName === "users" ? "" : "none";
+      if (details)
+        details.style.display = tabName === "details" ? "" : "none";
+      if (services)
+        services.style.display = tabName === "services" ? "" : "none";
+    });
+  });
+
+  // Performance sidebar navigation
+  $$(".perf-sidebar-item").forEach((item) => {
+    item.addEventListener("click", function () {
+      $$(".perf-sidebar-item").forEach((i) => i.classList.remove("active"));
+      this.classList.add("active");
+      const perfType = this.dataset.perf;
+      $$(".perf-detail-panel").forEach((p) => {
+        p.classList.toggle("active", p.dataset.perfPanel === perfType);
+      });
     });
   });
 
@@ -791,30 +818,42 @@
         g.appendChild(bar);
       }
     });
+    // Mini graphs in sidebar
+    ["cpu-mini", "mem-mini", "disk-mini", "net-mini"].forEach((id, idx) => {
+      const g = $(id);
+      if (!g) return;
+      const vals = [12, 58, 2, 1];
+      for (let i = 0; i < 20; i++) {
+        const bar = document.createElement("div");
+        bar.className = "perf-graph-bar";
+        const base = vals[idx];
+        const h = Math.max(2, base + Math.random() * 15 - 7);
+        bar.style.left = i * 5 + "%";
+        bar.style.width = "4%";
+        bar.style.height = Math.min(100, h) + "%";
+        g.appendChild(bar);
+      }
+    });
+    // Set usage indicator on column headers
+    $$(".th-usage-bg").forEach((col) => {
+      const usage = col.dataset.usage;
+      if (usage) col.style.setProperty("--usage", usage + "%");
+    });
   }
   initPerfGraphs();
 
   // ===== Settings Navigation =====
   const settingsPageMap = {
     system: "settings-page-system",
-    devices: "settings-page-generic",
-    network: "settings-page-generic",
+    devices: "settings-page-devices",
+    network: "settings-page-network",
     personalize: "settings-page-personalize",
-    accounts: "settings-page-generic",
-    time: "settings-page-generic",
-    gaming: "settings-page-generic",
-    ease: "settings-page-generic",
-    privacy: "settings-page-generic",
+    accounts: "settings-page-accounts",
+    time: "settings-page-time",
+    gaming: "settings-page-gaming",
+    ease: "settings-page-ease",
+    privacy: "settings-page-privacy",
     update: "settings-page-update",
-  };
-  const genericPageTitles = {
-    devices: "设备",
-    network: "网络和 Internet",
-    accounts: "账户",
-    time: "时间和语言",
-    gaming: "游戏",
-    ease: "轻松使用",
-    privacy: "隐私",
   };
 
   function openSettingsPage(page, section) {
@@ -827,35 +866,17 @@
     if (back) back.style.display = "";
 
     const targetId = settingsPageMap[page];
-    if (targetId === "settings-page-generic") {
-      const gp = $("settings-page-generic");
-      if (gp) {
-        gp.style.display = "";
-        const title = genericPageTitles[page] || page;
-        const gt = $("settings-generic-title");
-        const gtn = $("settings-generic-title-nav");
-        const gd = $("settings-generic-desc");
-        if (gt) gt.textContent = title;
-        if (gtn) gtn.textContent = title;
-        if (gd) gd.textContent = "此页面正在建设中...";
-      }
-    } else {
-      const tp = $(targetId);
-      if (tp) tp.style.display = "";
-    }
+    const tp = $(targetId);
+    if (tp) tp.style.display = "";
 
-    // If a section is specified (e.g., "about" for system page)
-    if (section && targetId === "settings-page-system") {
-      const navs = $$(
-        "#settings-page-system .settings-nav",
-      );
+    // If a section is specified, activate it
+    if (section && tp) {
+      const navs = tp.querySelectorAll(".settings-nav");
       navs.forEach((n) => n.classList.remove("active"));
       navs.forEach((n) => {
         if (n.dataset.section === section) n.classList.add("active");
       });
-      const panels = $$(
-        "#settings-page-system .settings-panel",
-      );
+      const panels = tp.querySelectorAll(".settings-panel");
       panels.forEach((p) => {
         p.classList.toggle("active", p.dataset.panel === section);
       });
@@ -880,15 +901,17 @@
     });
   }
 
-  // Settings sidebar nav on system page
-  $$("#settings-page-system .settings-nav").forEach((nav) =>
+  // Settings sidebar nav on all settings pages
+  $$(".settings-page .settings-nav").forEach((nav) =>
     nav.addEventListener("click", function () {
-      $$("#settings-page-system .settings-nav").forEach((n) =>
+      const page = this.closest(".settings-page");
+      if (!page) return;
+      page.querySelectorAll(".settings-nav").forEach((n) =>
         n.classList.remove("active"),
       );
       this.classList.add("active");
       const sec = this.dataset.section;
-      $$("#settings-page-system .settings-panel").forEach((p) => {
+      page.querySelectorAll(".settings-panel").forEach((p) => {
         p.classList.toggle("active", p.dataset.panel === sec);
       });
     }),
@@ -936,4 +959,56 @@
       this.classList.add("active");
     }),
   );
+
+  // ===== Control Panel Navigation =====
+  const cpPageMap = {
+    "system-security": "cp-page-system-security",
+    "programs": "cp-page-programs",
+  };
+  $$(".cp-cat[data-cp-page]").forEach((cat) => {
+    cat.addEventListener("click", function () {
+      const page = this.dataset.cpPage;
+      const homeView = $("cp-home-view");
+      const backBtn = document.querySelector(".cp-back-btn");
+      const crumbText = $("cp-crumb-current");
+      const statusText = $("cp-status-text");
+      if (homeView) homeView.style.display = "none";
+      // Hide all subpages
+      document.querySelectorAll(".cp-subpage").forEach((p) => (p.style.display = "none"));
+      // Show target or generic
+      const targetId = cpPageMap[page] || "cp-page-generic";
+      const target = $(targetId);
+      if (target) {
+        target.style.display = "";
+        if (targetId === "cp-page-generic") {
+          const genericTitle = $("cp-generic-title");
+          if (genericTitle) genericTitle.textContent = this.querySelector(".cp-cat-title").textContent;
+        }
+      }
+      if (crumbText) crumbText.textContent = this.querySelector(".cp-cat-title").textContent;
+      if (backBtn) { backBtn.classList.remove("disabled"); }
+      if (statusText) statusText.textContent = "";
+    });
+  });
+  // CP back button
+  document.querySelectorAll(".cp-back-btn").forEach((btn) => {
+    btn.addEventListener("click", function () {
+      if (this.classList.contains("disabled")) return;
+      const homeView = $("cp-home-view");
+      const crumbText = $("cp-crumb-current");
+      const statusText = $("cp-status-text");
+      document.querySelectorAll(".cp-subpage").forEach((p) => (p.style.display = "none"));
+      if (homeView) homeView.style.display = "";
+      if (crumbText) crumbText.textContent = "所有控制面板项";
+      this.classList.add("disabled");
+      if (statusText) statusText.textContent = "8 个项目";
+    });
+  });
+  // CP home link
+  document.querySelectorAll(".cp-home-link").forEach((link) => {
+    link.addEventListener("click", function () {
+      const backBtn = document.querySelector(".cp-back-btn");
+      if (backBtn) backBtn.click();
+    });
+  });
 })();

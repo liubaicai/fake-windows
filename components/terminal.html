@@ -1,10 +1,16 @@
 <!-- ===== 终端 (PowerShell) ===== -->
 <div class="window" id="terminal-win" style="top:120px;left:180px;width:750px;height:480px">
   <div class="rh n"></div><div class="rh s"></div><div class="rh e"></div><div class="rh w"></div><div class="rh ne"></div><div class="rh nw"></div><div class="rh se"></div><div class="rh sw"></div>
-  <div class="terminal-titlebar" data-win="terminal-win">
-    <div class="win-titlebar-icon"><img src="icons/terminal.svg" alt=""></div>
-    <span class="win-titlebar-title">Windows PowerShell</span>
-    <div class="win-titlebar-btns"><div class="win-btn minimize-btn" data-win="terminal-win"><svg viewBox="0 0 10 10"><line x1="0" y1="5" x2="10" y2="5" stroke="#ccc" stroke-width="1"/></svg></div><div class="win-btn maximize-btn" data-win="terminal-win"><svg viewBox="0 0 10 10"><rect x="0.5" y="0.5" width="9" height="9" fill="none" stroke="#ccc" stroke-width="1"/></svg></div><div class="win-btn close-btn" data-win="terminal-win"><svg viewBox="0 0 10 10"><line x1="0" y1="0" x2="10" y2="10" stroke="#ccc" stroke-width="1.2"/><line x1="10" y1="0" x2="0" y2="10" stroke="#ccc" stroke-width="1.2"/></svg></div></div>
+  <div class="terminal-tab-bar">
+    <div class="terminal-tabs-area">
+      <div class="terminal-tab active">
+        <img src="icons/terminal.svg" alt="" width="14" height="14">
+        <span>Windows PowerShell</span>
+        <div class="terminal-tab-close">×</div>
+      </div>
+      <div class="terminal-tab-new" title="新建标签页">+</div>
+    </div>
+    <div class="win-titlebar-btns" style="flex-shrink:0"><div class="win-btn minimize-btn" data-win="terminal-win"><svg viewBox="0 0 10 10"><line x1="0" y1="5" x2="10" y2="5" stroke="#ccc" stroke-width="1"/></svg></div><div class="win-btn maximize-btn" data-win="terminal-win"><svg viewBox="0 0 10 10"><rect x="0.5" y="0.5" width="9" height="9" fill="none" stroke="#ccc" stroke-width="1"/></svg></div><div class="win-btn close-btn" data-win="terminal-win"><svg viewBox="0 0 10 10"><line x1="0" y1="0" x2="10" y2="10" stroke="#ccc" stroke-width="1.2"/><line x1="10" y1="0" x2="0" y2="10" stroke="#ccc" stroke-width="1.2"/></svg></div></div>
   </div>
   <div class="terminal-body" id="terminal-output">Windows PowerShell
 Copyright (C) Microsoft Corporation. All rights reserved.
