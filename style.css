@@ -1016,9 +1016,7 @@ body {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  -webkit-app-region: drag;
 }
-.terminal-tab-bar[data-win] { cursor: default; }
 .terminal-tabs-area {
   display: flex;
   align-items: flex-end;
