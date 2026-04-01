@@ -19,7 +19,7 @@
   <!-- 进程 tab -->
   <div class="taskmgr-body" id="taskmgr-processes">
     <div class="taskmgr-header">
-      <span style="flex:2">名称</span><span style="flex:1">CPU</span><span style="flex:1">内存</span><span style="flex:1">磁盘</span><span style="flex:1">网络</span>
+      <span style="flex:2">名称</span><span style="flex:1" class="hdr-cpu">CPU</span><span style="flex:1" class="hdr-mem">内存</span><span style="flex:1" class="hdr-disk">磁盘</span><span style="flex:1" class="hdr-net">网络</span>
     </div>
     <div class="taskmgr-section">&#9660; 应用 (3)</div>
     <div class="taskmgr-process"><span class="tp-name"><img src="icons/file-manager.svg" alt="">文件资源管理器</span><span class="tp-cpu">0.1%</span><span class="tp-mem">68.2 MB</span><span class="tp-disk">0.1 MB/秒</span><span class="tp-net">0 Mbps</span></div>
@@ -40,31 +40,145 @@
     <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">System</span><span class="tp-cpu">0.1%</span><span class="tp-mem">0.1 MB</span><span class="tp-disk">0.1 MB/秒</span><span class="tp-net">0 Mbps</span></div>
     <div class="taskmgr-process"><span class="tp-name"><img src="icons/preferences-system.svg" alt="">Windows Explorer</span><span class="tp-cpu med">2.1%</span><span class="tp-mem">95.4 MB</span><span class="tp-disk">0 MB/秒</span><span class="tp-net">0 Mbps</span></div>
   </div>
+  <div class="taskmgr-footer" id="taskmgr-footer">
+    <button class="taskmgr-end-btn">结束任务</button>
+  </div>
   <!-- 性能 tab -->
   <div class="taskmgr-perf" id="taskmgr-performance" style="display:none">
-    <div class="perf-card">
-      <div class="perf-card-title">CPU</div>
-      <div class="perf-card-value">12%</div>
-      <div class="perf-graph" id="cpu-graph"></div>
-      <div class="perf-info">基本速度: 3.60 GHz<br>插槽: 1<br>内核: 8<br>逻辑处理器: 16<br>正常运行时间: 2:14:36:08</div>
+    <div class="perf-sidebar">
+      <div class="perf-sidebar-item active" data-perf="cpu">
+        <div class="perf-sidebar-title">CPU</div>
+        <div class="perf-sidebar-graph" id="cpu-mini-graph"></div>
+        <div class="perf-sidebar-value">12%</div>
+      </div>
+      <div class="perf-sidebar-item" data-perf="mem">
+        <div class="perf-sidebar-title">内存</div>
+        <div class="perf-sidebar-graph" id="mem-mini-graph"></div>
+        <div class="perf-sidebar-value">9.3/16.0 GB (58%)</div>
+      </div>
+      <div class="perf-sidebar-item" data-perf="disk">
+        <div class="perf-sidebar-title">磁盘 0 (C:)</div>
+        <div class="perf-sidebar-graph" id="disk-mini-graph"></div>
+        <div class="perf-sidebar-value">活动时间 2%</div>
+      </div>
+      <div class="perf-sidebar-item" data-perf="net">
+        <div class="perf-sidebar-title">以太网</div>
+        <div class="perf-sidebar-graph" id="net-mini-graph"></div>
+        <div class="perf-sidebar-value">发: 0.2 Kbps  收: 1.5 Kbps</div>
+      </div>
     </div>
-    <div class="perf-card">
-      <div class="perf-card-title">内存</div>
-      <div class="perf-card-value">9.3/16.0 GB (58%)</div>
-      <div class="perf-graph" id="mem-graph"></div>
-      <div class="perf-info">速度: 3200 MHz<br>已用插槽: 2/4<br>硬件保留: 283 MB<br>已提交: 12.8/24.0 GB<br>已缓存: 4.2 GB</div>
-    </div>
-    <div class="perf-card">
-      <div class="perf-card-title">磁盘 0 (C:)</div>
-      <div class="perf-card-value">活动时间 2%</div>
-      <div class="perf-graph" id="disk-graph"></div>
-      <div class="perf-info">容量: 476 GB<br>已格式化: 476 GB<br>系统盘: 是<br>类型: SSD</div>
-    </div>
-    <div class="perf-card">
-      <div class="perf-card-title">以太网</div>
-      <div class="perf-card-value">发送: 0.2 Kbps &nbsp; 接收: 1.5 Kbps</div>
-      <div class="perf-graph" id="net-graph"></div>
-      <div class="perf-info">适配器名称: Intel I219-V<br>连接类型: 以太网<br>IPv4 地址: 192.168.1.100</div>
+    <div class="perf-detail">
+      <div class="perf-detail-panel active" data-perfpanel="cpu">
+        <div class="perf-detail-header">
+          <span class="perf-detail-label">CPU</span>
+          <span class="perf-detail-model">Intel(R) Core(TM) i7-10700K</span>
+        </div>
+        <div class="perf-detail-top">
+          <div class="perf-detail-graph-wrap">
+            <div class="perf-detail-graph-label">% 使用率</div>
+            <div class="perf-detail-graph" id="cpu-graph"></div>
+            <div class="perf-detail-graph-footer"><span>60 秒</span></div>
+          </div>
+        </div>
+        <div class="perf-detail-stats">
+          <div class="perf-stat-grid">
+            <div class="perf-stat"><span class="perf-stat-label">使用率</span><span class="perf-stat-val perf-highlight">12%</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">速度</span><span class="perf-stat-val perf-highlight">3.60 GHz</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">进程</span><span class="perf-stat-val">83</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">线程</span><span class="perf-stat-val">1,248</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">句柄</span><span class="perf-stat-val">54,382</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">正常运行时间</span><span class="perf-stat-val">2:14:36:08</span></div>
+          </div>
+          <div class="perf-detail-specs">
+            <div><span>基本速度:</span> 3.80 GHz</div>
+            <div><span>插槽:</span> 1</div>
+            <div><span>内核:</span> 8</div>
+            <div><span>逻辑处理器:</span> 16</div>
+            <div><span>虚拟化:</span> 已启用</div>
+          </div>
+        </div>
+      </div>
+      <div class="perf-detail-panel" data-perfpanel="mem">
+        <div class="perf-detail-header">
+          <span class="perf-detail-label">内存</span>
+          <span class="perf-detail-model">16.0 GB DDR4</span>
+        </div>
+        <div class="perf-detail-top">
+          <div class="perf-detail-graph-wrap">
+            <div class="perf-detail-graph-label">内存使用量</div>
+            <div class="perf-detail-graph" id="mem-graph"></div>
+            <div class="perf-detail-graph-footer"><span>60 秒</span></div>
+          </div>
+        </div>
+        <div class="perf-detail-stats">
+          <div class="perf-stat-grid">
+            <div class="perf-stat"><span class="perf-stat-label">使用中</span><span class="perf-stat-val perf-highlight">9.3 GB</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">可用</span><span class="perf-stat-val perf-highlight">6.5 GB</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">已提交</span><span class="perf-stat-val">12.8/24.0 GB</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">已缓存</span><span class="perf-stat-val">4.2 GB</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">分页缓冲池</span><span class="perf-stat-val">516 MB</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">非分页缓冲池</span><span class="perf-stat-val">183 MB</span></div>
+          </div>
+          <div class="perf-detail-specs">
+            <div><span>速度:</span> 3200 MHz</div>
+            <div><span>已用插槽:</span> 2/4</div>
+            <div><span>外形规格:</span> DIMM</div>
+            <div><span>硬件保留:</span> 283 MB</div>
+          </div>
+        </div>
+      </div>
+      <div class="perf-detail-panel" data-perfpanel="disk">
+        <div class="perf-detail-header">
+          <span class="perf-detail-label">磁盘 0 (C:)</span>
+          <span class="perf-detail-model">Samsung SSD 970 EVO Plus</span>
+        </div>
+        <div class="perf-detail-top">
+          <div class="perf-detail-graph-wrap">
+            <div class="perf-detail-graph-label">活动时间</div>
+            <div class="perf-detail-graph" id="disk-graph"></div>
+            <div class="perf-detail-graph-footer"><span>60 秒</span></div>
+          </div>
+        </div>
+        <div class="perf-detail-stats">
+          <div class="perf-stat-grid">
+            <div class="perf-stat"><span class="perf-stat-label">活动时间</span><span class="perf-stat-val perf-highlight">2%</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">平均响应时间</span><span class="perf-stat-val perf-highlight">1.2 毫秒</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">读取速度</span><span class="perf-stat-val">0 KB/秒</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">写入速度</span><span class="perf-stat-val">64 KB/秒</span></div>
+          </div>
+          <div class="perf-detail-specs">
+            <div><span>容量:</span> 476 GB</div>
+            <div><span>已格式化:</span> 476 GB</div>
+            <div><span>系统盘:</span> 是</div>
+            <div><span>类型:</span> SSD</div>
+          </div>
+        </div>
+      </div>
+      <div class="perf-detail-panel" data-perfpanel="net">
+        <div class="perf-detail-header">
+          <span class="perf-detail-label">以太网</span>
+          <span class="perf-detail-model">Intel I219-V</span>
+        </div>
+        <div class="perf-detail-top">
+          <div class="perf-detail-graph-wrap">
+            <div class="perf-detail-graph-label">吞吐量</div>
+            <div class="perf-detail-graph" id="net-graph"></div>
+            <div class="perf-detail-graph-footer"><span>60 秒</span></div>
+          </div>
+        </div>
+        <div class="perf-detail-stats">
+          <div class="perf-stat-grid">
+            <div class="perf-stat"><span class="perf-stat-label">发送</span><span class="perf-stat-val perf-highlight">0.2 Kbps</span></div>
+            <div class="perf-stat"><span class="perf-stat-label">接收</span><span class="perf-stat-val perf-highlight">1.5 Kbps</span></div>
+          </div>
+          <div class="perf-detail-specs">
+            <div><span>适配器名称:</span> Intel I219-V</div>
+            <div><span>连接类型:</span> 以太网</div>
+            <div><span>IPv4 地址:</span> 192.168.1.100</div>
+            <div><span>IPv6 地址:</span> fe80::1</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="taskmgr-statusbar"><span>进程: 83</span><span>CPU 使用率: 12%</span><span>物理内存: 58%</span><span>磁盘: 2%</span><span>网络: 0%</span></div>

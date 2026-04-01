@@ -767,22 +767,26 @@
       // Show/hide tab content
       const processes = $("taskmgr-processes");
       const performance = $("taskmgr-performance");
+      const footer = $("taskmgr-footer");
       if (processes)
         processes.style.display = tabName === "processes" ? "" : "none";
       if (performance)
         performance.style.display = tabName === "performance" ? "" : "none";
+      if (footer)
+        footer.style.display = tabName === "processes" ? "" : "none";
     });
   });
 
   // Performance graph bars
   function initPerfGraphs() {
-    ["cpu-graph", "mem-graph", "disk-graph", "net-graph"].forEach((id, idx) => {
+    // Mini graphs in sidebar
+    ["cpu-mini-graph", "mem-mini-graph", "disk-mini-graph", "net-mini-graph"].forEach((id, idx) => {
       const g = $(id);
       if (!g) return;
       const vals = [12, 58, 2, 1];
       for (let i = 0; i < 30; i++) {
         const bar = document.createElement("div");
-        bar.className = "perf-graph-bar";
+        bar.className = "perf-mini-bar";
         const base = vals[idx];
         const h = Math.max(2, base + Math.random() * 15 - 7);
         bar.style.left = i * 3.33 + "%";
@@ -791,8 +795,36 @@
         g.appendChild(bar);
       }
     });
+    // Detail graphs
+    ["cpu-graph", "mem-graph", "disk-graph", "net-graph"].forEach((id, idx) => {
+      const g = $(id);
+      if (!g) return;
+      const vals = [12, 58, 2, 1];
+      for (let i = 0; i < 60; i++) {
+        const bar = document.createElement("div");
+        bar.className = "perf-graph-bar";
+        const base = vals[idx];
+        const h = Math.max(1, base + Math.random() * 15 - 7);
+        bar.style.left = i * 1.67 + "%";
+        bar.style.width = "1.4%";
+        bar.style.height = Math.min(100, h) + "%";
+        g.appendChild(bar);
+      }
+    });
   }
   initPerfGraphs();
+
+  // Performance sidebar tab switching
+  $$(".perf-sidebar-item").forEach((item) => {
+    item.addEventListener("click", function () {
+      $$(".perf-sidebar-item").forEach((i) => i.classList.remove("active"));
+      this.classList.add("active");
+      const perf = this.dataset.perf;
+      $$(".perf-detail-panel").forEach((p) => {
+        p.classList.toggle("active", p.dataset.perfpanel === perf);
+      });
+    });
+  });
 
   // ===== Settings Navigation =====
   const settingsPageMap = {

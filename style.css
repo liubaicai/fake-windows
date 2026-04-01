@@ -1211,34 +1211,103 @@ body {
 .taskmgr-perf {
   flex: 1;
   display: flex;
-  flex-direction: column;
-  padding: 16px;
-  gap: 16px;
+  overflow: hidden;
+}
+.perf-sidebar {
+  width: 170px;
+  background: #2d2d30;
+  flex-shrink: 0;
   overflow-y: auto;
 }
-.perf-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  padding: 12px;
-  border-radius: 2px;
+.perf-sidebar-item {
+  padding: 8px 10px;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  color: #ccc;
 }
-.perf-card-title {
+.perf-sidebar-item:hover {
+  background: rgba(255,255,255,0.05);
+}
+.perf-sidebar-item.active {
+  background: rgba(0,120,215,0.15);
+  border-left-color: #0078d4;
+  color: #fff;
+}
+.perf-sidebar-title {
   font-size: 12px;
-  color: #666;
-  margin-bottom: 8px;
+  font-weight: 600;
+  margin-bottom: 4px;
 }
-.perf-card-value {
-  font-size: 24px;
-  font-weight: 300;
-  color: #0078d4;
-  margin-bottom: 8px;
-}
-.perf-graph {
-  height: 60px;
-  background: #f0f8ff;
-  border: 1px solid #ddd;
+.perf-sidebar-graph {
+  height: 24px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
   position: relative;
   overflow: hidden;
+  margin-bottom: 3px;
+}
+.perf-sidebar-value {
+  font-size: 10px;
+  color: #999;
+}
+.perf-mini-bar {
+  position: absolute;
+  bottom: 0;
+  background: #0078d4;
+  opacity: 0.7;
+}
+.perf-detail {
+  flex: 1;
+  background: #1e1e1e;
+  overflow-y: auto;
+}
+.perf-detail-panel {
+  display: none;
+  padding: 16px 20px;
+  color: #ccc;
+}
+.perf-detail-panel.active {
+  display: block;
+}
+.perf-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+.perf-detail-label {
+  font-size: 20px;
+  font-weight: 300;
+  color: #fff;
+}
+.perf-detail-model {
+  font-size: 12px;
+  color: #999;
+}
+.perf-detail-top {
+  margin-bottom: 16px;
+}
+.perf-detail-graph-wrap {
+  position: relative;
+}
+.perf-detail-graph-label {
+  font-size: 10px;
+  color: #999;
+  margin-bottom: 4px;
+}
+.perf-detail-graph {
+  height: 120px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
+}
+.perf-detail-graph-footer {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 10px;
+  color: #666;
+  margin-top: 2px;
 }
 .perf-graph-bar {
   position: absolute;
@@ -1246,12 +1315,66 @@ body {
   background: #0078d4;
   opacity: 0.6;
 }
-.perf-info {
-  margin-top: 8px;
+.perf-detail-stats {
+  display: flex;
+  gap: 20px;
+}
+.perf-stat-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 16px;
+}
+.perf-stat {
+  display: flex;
+  flex-direction: column;
+}
+.perf-stat-label {
+  font-size: 10px;
+  color: #888;
+}
+.perf-stat-val {
+  font-size: 13px;
+  color: #ccc;
+}
+.perf-stat-val.perf-highlight {
+  font-size: 18px;
+  font-weight: 300;
+  color: #0078d4;
+}
+.perf-detail-specs {
+  flex: 1;
   font-size: 11px;
   color: #888;
-  line-height: 1.6;
+  line-height: 1.8;
 }
+.perf-detail-specs span {
+  color: #aaa;
+}
+.taskmgr-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 6px 12px;
+  background: #f0f0f0;
+  border-top: 1px solid #ddd;
+  flex-shrink: 0;
+}
+.taskmgr-end-btn {
+  padding: 4px 20px;
+  font-size: 12px;
+  background: #e5e5e5;
+  border: 1px solid #adadad;
+  cursor: pointer;
+  color: #333;
+}
+.taskmgr-end-btn:hover {
+  background: #d5d5d5;
+  border-color: #0078d4;
+}
+.taskmgr-header span.hdr-cpu { background: rgba(255,152,0,0.12); }
+.taskmgr-header span.hdr-mem { background: rgba(156,39,176,0.08); }
+.taskmgr-header span.hdr-disk { background: rgba(33,150,243,0.08); }
+.taskmgr-header span.hdr-net { background: rgba(76,175,80,0.05); }
 
 /* ===== 设置窗口 ===== */
 .settings-titlebar {
