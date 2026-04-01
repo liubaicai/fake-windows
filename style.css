@@ -2150,6 +2150,18 @@ body {
   color: #666;
   background: #fff;
   border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cp-header-title {
+  font-size: 16px;
+  color: #333;
+  font-weight: 400;
+}
+.cp-header-viewby {
+  font-size: 12px;
+  color: #666;
 }
 .cp-view-mode { color: #0078d4; cursor: pointer; }
 .cp-body {
@@ -2175,7 +2187,7 @@ body {
 .cp-cat-icon {
   width: 48px;
   height: 48px;
-  border-radius: 4px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2183,6 +2195,8 @@ body {
 }
 .cp-cat-title { font-size: 15px; color: #0078d4; font-weight: 500; margin-bottom: 3px; }
 .cp-cat-desc { font-size: 12px; color: #666; line-height: 1.4; }
+.cp-link { color: #0078d4; cursor: pointer; }
+.cp-link:hover { text-decoration: underline; }
 
 /* ===== 设置窗口增强 ===== */
 .settings-back-btn {
