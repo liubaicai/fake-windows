@@ -1281,7 +1281,6 @@ body {
 .tp-status-disabled { color: #999 !important; }
 .svc-running { color: #107c10 !important; }
 .svc-stopped { color: #999 !important; }
-.taskmgr-tab-content { display: none; }
 .taskmgr-user-row .tp-name svg { margin-right: 6px; flex-shrink: 0; }
 .taskmgr-section {
   padding: 6px 8px;
