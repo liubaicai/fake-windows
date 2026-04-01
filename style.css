@@ -1427,6 +1427,8 @@ body {
 .settings-nav.active {
   background: rgba(0, 120, 215, 0.08);
   color: #0078d4;
+  border-left: 3px solid #0078d4;
+  padding-left: 13px;
 }
 .settings-nav svg {
   width: 18px;
@@ -1470,28 +1472,33 @@ body {
 .toggle-switch {
   width: 44px;
   height: 20px;
-  background: #888;
+  background: transparent;
+  border: 2px solid #888;
   border-radius: 10px;
   position: relative;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, border-color 0.2s;
+  box-sizing: border-box;
+  flex-shrink: 0;
 }
 .toggle-switch::after {
   content: "";
   position: absolute;
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background: #fff;
+  background: #888;
   top: 2px;
   left: 2px;
-  transition: transform 0.2s;
+  transition: transform 0.2s, background 0.2s;
 }
 .toggle-switch.on {
   background: #0078d4;
+  border-color: #0078d4;
 }
 .toggle-switch.on::after {
   transform: translateX(24px);
+  background: #fff;
 }
 
 /* ===== 日历弹窗 ===== */
@@ -2217,9 +2224,13 @@ body {
 }
 .settings-home-header {
   padding: 24px 32px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+}
+.settings-home-title {
+  font-size: 28px;
+  font-weight: 300;
+  color: #333;
+  margin: 16px 0 12px;
+  padding: 0;
 }
 .settings-user-area {
   display: flex;
@@ -2238,6 +2249,9 @@ body {
 .settings-user-name { font-size: 20px; font-weight: 300; color: #333; }
 .settings-user-sub { font-size: 13px; color: #0078d4; cursor: pointer; }
 .settings-user-sub:hover { text-decoration: underline; }
+.settings-home-search-wrap {
+  margin-top: 4px;
+}
 .settings-home-search {
   display: flex;
   align-items: center;
@@ -2245,8 +2259,9 @@ body {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 2px;
-  padding: 6px 12px;
-  width: 220px;
+  padding: 8px 12px;
+  width: 100%;
+  box-sizing: border-box;
 }
 .settings-search-input {
   border: none;
@@ -2257,7 +2272,7 @@ body {
 }
 .settings-grid {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 2px;
   padding: 0 32px 32px;
 }
