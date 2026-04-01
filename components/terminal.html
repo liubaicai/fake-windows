@@ -1,0 +1,35 @@
+<!-- ===== 终端 (PowerShell) ===== -->
+<div class="window" id="terminal-win" style="top:120px;left:180px;width:750px;height:480px">
+  <div class="rh n"></div><div class="rh s"></div><div class="rh e"></div><div class="rh w"></div><div class="rh ne"></div><div class="rh nw"></div><div class="rh se"></div><div class="rh sw"></div>
+  <div class="terminal-titlebar" data-win="terminal-win">
+    <div class="win-titlebar-icon"><img src="icons/terminal.svg" alt=""></div>
+    <span class="win-titlebar-title">Windows PowerShell</span>
+    <div class="win-titlebar-btns"><div class="win-btn minimize-btn" data-win="terminal-win"><svg viewBox="0 0 10 10"><line x1="0" y1="5" x2="10" y2="5" stroke="#ccc" stroke-width="1"/></svg></div><div class="win-btn maximize-btn" data-win="terminal-win"><svg viewBox="0 0 10 10"><rect x="0.5" y="0.5" width="9" height="9" fill="none" stroke="#ccc" stroke-width="1"/></svg></div><div class="win-btn close-btn" data-win="terminal-win"><svg viewBox="0 0 10 10"><line x1="0" y1="0" x2="10" y2="10" stroke="#ccc" stroke-width="1.2"/><line x1="10" y1="0" x2="0" y2="10" stroke="#ccc" stroke-width="1.2"/></svg></div></div>
+  </div>
+  <div class="terminal-body" id="terminal-output">Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+安装最新的 PowerShell，了解新功能和改进！https://aka.ms/PSWindows
+
+<span class="ps-prompt">PS C:\Users\用户&gt;</span> Get-ComputerInfo | Select-Object WindowsProductName, OsVersion
+
+WindowsProductName    OsVersion
+-------------------   ---------
+Windows 10 Pro        10.0.19045
+
+<span class="ps-prompt">PS C:\Users\用户&gt;</span> Get-Process | Select-Object -First 5 Name, CPU, WorkingSet
+
+Name                      CPU WorkingSet
+----                      --- ----------
+csrss                    8.45   15728640
+dwm                     12.31   98304000
+explorer                45.67  285212672
+RuntimeBroker            3.22   45056000
+svchost                  6.78   32768000
+
+</div>
+  <div class="terminal-input-line">
+    <span class="ps-prompt">PS C:\Users\用户&gt; </span>
+    <input type="text" class="terminal-input" id="terminal-input" spellcheck="false" autocomplete="off">
+  </div>
+</div>

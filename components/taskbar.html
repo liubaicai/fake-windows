@@ -1,0 +1,23 @@
+<!-- ===== 任务栏 ===== -->
+<div id="taskbar">
+  <div id="start-btn" title="开始"><svg viewBox="0 0 20 20"><rect x="1" y="1" width="8.5" height="8.5" fill="#fff"/><rect x="10.5" y="1" width="8.5" height="8.5" fill="#fff"/><rect x="1" y="10.5" width="8.5" height="8.5" fill="#fff"/><rect x="10.5" y="10.5" width="8.5" height="8.5" fill="#fff"/></svg></div>
+  <div id="search-box"><svg viewBox="0 0 20 20"><circle cx="8" cy="8" r="6" fill="none" stroke="#fff" stroke-width="2"/><line x1="12.5" y1="12.5" x2="18" y2="18" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span>在此键入进行搜索</span></div>
+  <div class="taskbar-icon" id="task-view-btn" title="任务视图"><svg viewBox="0 0 20 20" width="18" height="18"><rect x="1" y="1" width="8" height="8" rx="0.5" fill="none" stroke="#fff" stroke-width="1.3"/><rect x="11" y="1" width="8" height="8" rx="0.5" fill="none" stroke="#fff" stroke-width="1.3"/><rect x="1" y="11" width="8" height="8" rx="0.5" fill="none" stroke="#fff" stroke-width="1.3"/><rect x="11" y="11" width="8" height="8" rx="0.5" fill="none" stroke="#fff" stroke-width="1.3"/></svg></div>
+  <div class="taskbar-icon" id="tb-explorer" data-winid="explorer-win" title="文件资源管理器"><img src="icons/file-manager.svg" width="22" height="22"></div>
+  <div class="taskbar-icon" id="tb-edge" data-winid="edge-win" title="Microsoft Edge"><img src="icons/microsoft-edge.svg" width="22" height="22"></div>
+  <div class="taskbar-icon" id="tb-controlpanel" data-winid="controlpanel-win" title="控制面板" style="display:none"><img src="icons/preferences-system.svg" width="22" height="22"></div>
+  <div class="taskbar-icon" id="tb-terminal" data-winid="terminal-win" title="Windows PowerShell" style="display:none"><img src="icons/terminal.svg" width="22" height="22"></div>
+  <div class="taskbar-icon" id="tb-notepad" data-winid="notepad-win" title="记事本" style="display:none"><img src="icons/text-editor.svg" width="22" height="22"></div>
+  <div class="taskbar-icon" id="tb-settings" data-winid="settings-win" title="设置" style="display:none"><img src="icons/preferences-system.svg" width="22" height="22"></div>
+  <div class="taskbar-icon" id="tb-taskmgr" data-winid="taskmgr-win" title="任务管理器" style="display:none"><img src="icons/utilities-system-monitor.svg" width="22" height="22"></div>
+  <div id="system-tray">
+    <div class="tray-icon" id="tray-expand" title="显示隐藏的图标"><svg viewBox="0 0 16 16" width="10" height="10"><path d="M4 10 L8 6 L12 10" stroke="#fff" stroke-width="1.5" fill="none"/></svg></div>
+    <div class="tray-icon" id="tray-network" title="网络"><svg viewBox="0 0 16 16"><path d="M1 12 L3 12 L3 8 L1 8 Z" fill="rgba(255,255,255,0.3)"/><path d="M5 12 L7 12 L7 6 L5 6 Z" fill="rgba(255,255,255,0.5)"/><path d="M9 12 L11 12 L11 4 L9 4 Z" fill="rgba(255,255,255,0.7)"/><path d="M13 12 L15 12 L15 2 L13 2 Z" fill="#fff"/></svg></div>
+    <div class="tray-icon" id="tray-volume" title="扬声器"><svg viewBox="0 0 16 16"><path d="M2 6 L5 6 L8 3 L8 13 L5 10 L2 10 Z" fill="#fff"/><path d="M10 5 C11.5 6.5 11.5 9.5 10 11" fill="none" stroke="#fff" stroke-width="1.2"/><path d="M12 3 C14.5 5.5 14.5 10.5 12 13" fill="none" stroke="#fff" stroke-width="1.2"/></svg></div>
+    <div class="tray-icon" title="电池"><svg viewBox="0 0 16 16"><rect x="1" y="4" width="12" height="8" rx="1" fill="none" stroke="#fff" stroke-width="1"/><rect x="13" y="6" width="2" height="4" rx="0.5" fill="#fff"/><rect x="2.5" y="5.5" width="9" height="5" rx="0.5" fill="#fff"/></svg></div>
+    <div id="lang-indicator" title="输入指示器">中</div>
+    <div id="datetime"><span id="clock-time">14:43</span><span id="clock-date">2026/3/31</span></div>
+    <div id="notification-btn" title="通知"><svg viewBox="0 0 16 16"><path d="M3 10 L3 6 C3 3.5 5 1.5 8 1.5 C11 1.5 13 3.5 13 6 L13 10 L14 11 L14 12 L2 12 L2 11 Z" fill="none" stroke="#fff" stroke-width="1.2"/><path d="M6 12 C6 13.5 7 14.5 8 14.5 C9 14.5 10 13.5 10 12" fill="none" stroke="#fff" stroke-width="1"/></svg><div class="notif-badge">2</div></div>
+    <div id="show-desktop-btn" title="显示桌面"></div>
+  </div>
+</div>

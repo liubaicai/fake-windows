@@ -1,0 +1,50 @@
+<!-- ===== 桌面右键菜单 ===== -->
+<div class="ctx-menu" id="desktop-ctx">
+  <div class="menu-item"><span class="menu-text">查看(V)</span><span class="menu-arrow">&#9654;</span><div class="submenu"><div class="menu-item" data-view="large"><span class="check-mark" id="ck-large">&#10003;</span><span class="menu-text">大图标(R)</span></div><div class="menu-item" data-view="medium"><span class="menu-text">中等图标(M)</span></div><div class="menu-item" data-view="small"><span class="menu-text">小图标(N)</span></div><div class="menu-separator"></div><div class="menu-item"><span class="check-mark">&#10003;</span><span class="menu-text">自动排列图标(A)</span></div><div class="menu-item"><span class="check-mark">&#10003;</span><span class="menu-text">将图标与网格对齐(I)</span></div><div class="menu-separator"></div><div class="menu-item"><span class="check-mark">&#10003;</span><span class="menu-text">显示桌面图标(D)</span></div></div></div>
+  <div class="menu-item"><span class="menu-text">排序方式(O)</span><span class="menu-arrow">&#9654;</span><div class="submenu"><div class="menu-item"><span class="menu-text">名称(N)</span></div><div class="menu-item"><span class="menu-text">大小(S)</span></div><div class="menu-item"><span class="menu-text">项目类型(T)</span></div><div class="menu-item"><span class="menu-text">修改日期(D)</span></div></div></div>
+  <div class="menu-item" id="ctx-refresh"><span class="menu-text">刷新(E)</span></div>
+  <div class="menu-separator"></div>
+  <div class="menu-item disabled"><span class="menu-text">粘贴(P)</span></div>
+  <div class="menu-item disabled"><span class="menu-text">粘贴快捷方式(S)</span></div>
+  <div class="menu-item disabled"><span class="menu-text">撤消 复制(U)</span><span class="menu-shortcut">Ctrl+Z</span></div>
+  <div class="menu-separator"></div>
+  <div class="menu-item"><span class="menu-text">新建(W)</span><span class="menu-arrow">&#9654;</span><div class="submenu"><div class="menu-item"><span class="mi-icon"><svg viewBox="0 0 16 16"><path d="M2 2 L7 2 L9 4 L14 4 L14 14 L2 14 Z" fill="#F5DC6E" stroke="#C4A83A" stroke-width="0.5"/></svg></span><span class="menu-text">文件夹</span></div><div class="menu-item"><span class="mi-icon"><svg viewBox="0 0 16 16"><path d="M3 1h7l4 4v10H3V1z" fill="#fff" stroke="#999" stroke-width="0.5"/><path d="M10 1v4h4" fill="#eee" stroke="#999" stroke-width="0.5"/></svg></span><span class="menu-text">快捷方式</span></div><div class="menu-separator"></div><div class="menu-item"><span class="mi-icon"><svg viewBox="0 0 16 16"><path d="M3 1h7l4 4v10H3V1z" fill="#fff" stroke="#999" stroke-width="0.5"/><path d="M10 1v4h4" fill="#eee" stroke="#999" stroke-width="0.5"/><path d="M5 7h6M5 9h6M5 11h4" stroke="#666" stroke-width="0.5"/></svg></span><span class="menu-text">文本文档</span></div><div class="menu-item"><span class="mi-icon"><svg viewBox="0 0 16 16"><rect x="2" y="1" width="12" height="14" rx="1" fill="#fff" stroke="#999" stroke-width="0.5"/><circle cx="8" cy="6" r="2" fill="#C4E0F9" stroke="#5B9BD5" stroke-width="0.5"/></svg></span><span class="menu-text">位图图像</span></div></div></div>
+  <div class="menu-separator"></div>
+  <div class="menu-item"><span class="mi-icon"><svg viewBox="0 0 16 16"><rect x="1" y="2" width="14" height="10" rx="1" fill="#0078D4" stroke="#005A9E" stroke-width="0.5"/><rect x="6" y="12" width="4" height="2" fill="#666"/><rect x="4" y="14" width="8" height="0.8" rx="0.3" fill="#666"/></svg></span><span class="menu-text">显示设置(D)</span></div>
+  <div class="menu-item"><span class="mi-icon"><svg viewBox="0 0 16 16"><rect x="1" y="1" width="14" height="14" rx="2" fill="#0078D4"/><rect x="3" y="3" width="10" height="7" rx="1" fill="#fff" opacity="0.3"/><circle cx="8" cy="12" r="1.5" fill="#fff" opacity="0.5"/></svg></span><span class="menu-text">个性化(R)</span></div>
+</div>
+
+<!-- ===== 图标右键 ===== -->
+<div class="ctx-menu" id="icon-ctx">
+  <div class="menu-item" id="ictx-open"><span class="menu-text" style="font-weight:600">打开(O)</span></div>
+  <div class="menu-separator"></div>
+  <div class="menu-item"><span class="menu-text">剪切(T)</span><span class="menu-shortcut">Ctrl+X</span></div>
+  <div class="menu-item"><span class="menu-text">复制(C)</span><span class="menu-shortcut">Ctrl+C</span></div>
+  <div class="menu-separator"></div>
+  <div class="menu-item"><span class="menu-text">创建快捷方式(S)</span></div>
+  <div class="menu-item"><span class="menu-text">删除(D)</span></div>
+  <div class="menu-item"><span class="menu-text">重命名(M)</span></div>
+  <div class="menu-separator"></div>
+  <div class="menu-item" id="ictx-properties"><span class="menu-text">属性(R)</span></div>
+</div>
+
+<!-- ===== 任务栏右键 ===== -->
+<div class="ctx-menu" id="taskbar-ctx">
+  <div class="menu-item"><span class="menu-text">工具栏(T)</span><span class="menu-arrow">&#9654;</span></div>
+  <div class="menu-separator"></div>
+  <div class="menu-item"><span class="check-mark">&#10003;</span><span class="menu-text">搜索(H)</span><span class="menu-arrow">&#9654;</span></div>
+  <div class="menu-item"><span class="check-mark">&#10003;</span><span class="menu-text">显示"任务视图"按钮(V)</span></div>
+  <div class="menu-item"><span class="check-mark">&#10003;</span><span class="menu-text">显示"人脉"按钮</span></div>
+  <div class="menu-separator"></div>
+  <div class="menu-item"><span class="menu-text">Cortana(C)</span><span class="menu-arrow">&#9654;</span></div>
+  <div class="menu-separator"></div>
+  <div class="menu-item"><span class="menu-text">级联窗口(A)</span></div>
+  <div class="menu-item"><span class="menu-text">堆叠显示窗口(K)</span></div>
+  <div class="menu-item"><span class="menu-text">并排显示窗口(I)</span></div>
+  <div class="menu-item" id="ctx-show-desktop"><span class="menu-text">显示桌面(S)</span></div>
+  <div class="menu-separator"></div>
+  <div class="menu-item" id="ctx-taskmgr"><span class="menu-text">任务管理器(K)</span></div>
+  <div class="menu-separator"></div>
+  <div class="menu-item"><span class="check-mark">&#10003;</span><span class="menu-text">锁定任务栏(L)</span></div>
+  <div class="menu-item"><span class="menu-text">任务栏设置(T)</span></div>
+</div>
