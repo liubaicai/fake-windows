@@ -1010,6 +1010,76 @@ body {
 }
 
 /* ===== 终端 (PowerShell) ===== */
+.terminal-tab-bar {
+  height: 32px;
+  background: #1e1e1e;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.terminal-tabs-area {
+  display: flex;
+  align-items: flex-end;
+  flex: 1;
+  height: 100%;
+  padding-left: 4px;
+  overflow: hidden;
+}
+.terminal-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  height: 28px;
+  background: #2d2d2d;
+  color: rgba(255,255,255,0.7);
+  font-size: 12px;
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+  margin-top: 4px;
+  max-width: 200px;
+  min-width: 60px;
+}
+.terminal-tab.active {
+  background: #012456;
+  color: #fff;
+}
+.terminal-tab span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+.terminal-tab-close {
+  font-size: 14px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: rgba(255,255,255,0.5);
+  flex-shrink: 0;
+}
+.terminal-tab-close:hover { background: rgba(255,255,255,0.15); color: #fff; }
+.terminal-tab-new {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  border-radius: 4px;
+  align-self: center;
+}
+.terminal-tab-new:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.terminal-tab-bar .win-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+.terminal-tab-bar .win-btn.close-btn:hover {
+  background: #e81123;
+}
+.terminal-tab-bar .win-btn svg line,
+.terminal-tab-bar .win-btn svg rect {
+  stroke: rgba(255,255,255,0.8);
+}
 .terminal-titlebar {
   height: 30px;
   background: #012456;
@@ -1129,24 +1199,87 @@ body {
 }
 .taskmgr-body {
   flex: 1;
-  overflow-y: auto;
+  overflow: hidden;
   background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.taskmgr-list {
+  flex: 1;
+  overflow-y: auto;
 }
 .taskmgr-header {
   display: flex;
-  padding: 4px 8px;
+  padding: 0 8px;
   border-bottom: 1px solid #eee;
   font-size: 11px;
   color: #555;
   background: #fafafa;
   cursor: pointer;
+  flex-shrink: 0;
 }
-.taskmgr-header span {
-  padding: 2px 4px;
+.taskmgr-header .th-col {
+  padding: 5px 4px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }
-.taskmgr-header span:hover {
+.taskmgr-header .th-col:hover {
   background: rgba(0, 120, 215, 0.06);
 }
+.th-arrow {
+  font-size: 8px;
+  color: #999;
+}
+.th-usage-bg {
+  position: relative;
+}
+.th-usage-bg::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  background: #0078d4;
+  width: var(--usage, 0%);
+  transition: width 0.3s;
+}
+.taskmgr-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 6px 12px;
+  border-top: 1px solid #eee;
+  background: #f8f8f8;
+  flex-shrink: 0;
+}
+.taskmgr-end-btn {
+  padding: 4px 18px;
+  font-size: 12px;
+  background: #e5e5e5;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.taskmgr-end-btn:hover { background: #ddd; }
+.taskmgr-link {
+  font-size: 12px;
+  color: #0078d4;
+  cursor: pointer;
+  text-decoration: none;
+}
+.taskmgr-link:hover { text-decoration: underline; }
+.taskmgr-apphistory-footer {
+  padding: 8px 12px;
+  border-top: 1px solid #eee;
+  background: #f8f8f8;
+  flex-shrink: 0;
+}
+.tp-status-enabled { color: #107c10 !important; }
+.tp-status-disabled { color: #999 !important; }
+.svc-running { color: #107c10 !important; }
+.svc-stopped { color: #999 !important; }
+.taskmgr-user-row .tp-name svg { margin-right: 6px; flex-shrink: 0; }
 .taskmgr-section {
   padding: 6px 8px;
   font-size: 12px;
@@ -1211,10 +1344,74 @@ body {
 .taskmgr-perf {
   flex: 1;
   display: flex;
-  flex-direction: column;
-  padding: 16px;
-  gap: 16px;
+  overflow: hidden;
+}
+.perf-sidebar {
+  width: 180px;
+  background: #f0f0f0;
+  border-right: 1px solid #ddd;
   overflow-y: auto;
+  flex-shrink: 0;
+}
+.perf-sidebar-item {
+  padding: 8px 10px;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+}
+.perf-sidebar-item:hover { background: #e8e8e8; }
+.perf-sidebar-item.active {
+  background: #e0e8f0;
+  border-left-color: #0078d4;
+}
+.perf-sidebar-label {
+  font-size: 12px;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.perf-sidebar-mini-graph {
+  height: 24px;
+  background: #fff;
+  border: 1px solid #ddd;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2px;
+}
+.perf-sidebar-val {
+  font-size: 10px;
+  color: #666;
+}
+.perf-detail {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+.perf-detail-panel { display: none; }
+.perf-detail-panel.active { display: block; }
+.perf-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+.perf-detail-type {
+  font-size: 20px;
+  font-weight: 300;
+  color: #0078d4;
+}
+.perf-detail-name {
+  font-size: 12px;
+  color: #666;
+}
+.perf-detail-graph-area {
+  margin-bottom: 16px;
+}
+.perf-graph-label-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #888;
+  margin-bottom: 4px;
 }
 .perf-card {
   background: #fff;
@@ -1233,6 +1430,28 @@ body {
   color: #0078d4;
   margin-bottom: 8px;
 }
+.perf-detail-stats {
+  margin-top: 12px;
+}
+.perf-detail-bigval {
+  font-size: 28px;
+  font-weight: 300;
+  color: #0078d4;
+  margin-bottom: 12px;
+}
+.perf-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 24px;
+}
+.perf-stat {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  padding: 2px 0;
+}
+.perf-stat-label { color: #666; }
+.perf-stat-val { color: #333; font-weight: 500; }
 .perf-graph {
   height: 60px;
   background: #f0f8ff;
@@ -2060,6 +2279,53 @@ body {
 }
 .cp-cat-title { font-size: 15px; color: #0078d4; font-weight: 500; margin-bottom: 3px; }
 .cp-cat-desc { font-size: 12px; color: #666; line-height: 1.4; }
+.cp-statusbar {
+  height: 24px;
+  background: #f0f0f0;
+  border-top: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  font-size: 11px;
+  color: #666;
+  flex-shrink: 0;
+}
+.cp-subpage { padding: 0; }
+.cp-subpage-header {
+  font-size: 20px;
+  font-weight: 300;
+  color: #333;
+  padding: 16px 24px 12px;
+  border-bottom: 1px solid #eee;
+}
+.cp-sub-section {
+  padding: 12px 24px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.cp-sub-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0078d4;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+.cp-sub-title:hover { text-decoration: underline; }
+.cp-sub-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 28px;
+}
+.cp-sub-link {
+  font-size: 12px;
+  color: #0078d4;
+  cursor: pointer;
+  text-decoration: none;
+}
+.cp-sub-link:hover { text-decoration: underline; }
 
 /* ===== 设置窗口增强 ===== */
 .settings-back-btn {

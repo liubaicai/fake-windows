@@ -148,14 +148,200 @@
         <div class="settings-section"><h3>选择契合度</h3><div class="settings-toggle"><span style="font-size:13px;flex:1">选择契合度</span><span style="font-size:13px;color:#0078d4">填充</span></div></div>
       </div>
     </div>
-    <!-- ===== 通用子页 (设备/网络/账户/时间/游戏/轻松使用/隐私) ===== -->
-    <div class="settings-page" id="settings-page-generic" style="display:none">
+    <!-- ===== 设备页 ===== -->
+    <div class="settings-page" id="settings-page-devices" style="display:none">
       <div class="settings-sidebar">
-        <div class="settings-nav active" id="settings-generic-nav"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="9" y1="5" x2="9" y2="10" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="12.5" r="0.8" fill="currentColor"/></svg><span id="settings-generic-title-nav">设备</span></div>
+        <div class="settings-nav active" data-section="bt"><svg viewBox="0 0 18 18"><path d="M9 2 L9 16 M9 2 L14 7 L9 12 M9 16 L14 11 L9 6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>蓝牙和其他设备</div>
+        <div class="settings-nav" data-section="printers"><svg viewBox="0 0 18 18"><rect x="4" y="2" width="10" height="5" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="2" y="7" width="14" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="5" y="11" width="8" height="5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>打印机和扫描仪</div>
+        <div class="settings-nav" data-section="mouse"><svg viewBox="0 0 18 18"><rect x="5" y="2" width="8" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="9" y1="2" x2="9" y2="7" stroke="currentColor" stroke-width="1"/></svg>鼠标</div>
+        <div class="settings-nav" data-section="typing"><svg viewBox="0 0 18 18"><rect x="2" y="5" width="14" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.2"/><line x1="5" y1="8" x2="7" y2="8" stroke="currentColor" stroke-width="1"/><line x1="9" y1="8" x2="11" y2="8" stroke="currentColor" stroke-width="1"/><line x1="5" y1="12" x2="13" y2="12" stroke="currentColor" stroke-width="1"/></svg>输入</div>
+        <div class="settings-nav" data-section="usb"><svg viewBox="0 0 18 18"><line x1="9" y1="3" x2="9" y2="15" stroke="currentColor" stroke-width="1.3"/><circle cx="9" cy="3" r="1.5" fill="none" stroke="currentColor" stroke-width="1"/><path d="M5 10 L9 8 M13 10 L9 8" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>USB</div>
       </div>
       <div class="settings-content">
-        <h2 id="settings-generic-title">设备</h2>
-        <div class="settings-section"><p style="color:#666;font-size:14px" id="settings-generic-desc">此页面正在建设中...</p></div>
+        <div class="settings-panel active" data-panel="bt">
+          <h2>蓝牙和其他设备</h2>
+          <div class="settings-section"><div class="settings-toggle"><span style="font-size:13px;flex:1">蓝牙</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div></div>
+          <div class="settings-section"><button class="settings-btn">+ 添加蓝牙或其他设备</button><p style="margin-top:12px;font-size:13px;color:#666">未发现设备。请确保设备已开启并且可被检测。</p></div>
+        </div>
+        <div class="settings-panel" data-panel="printers">
+          <h2>打印机和扫描仪</h2>
+          <div class="settings-section"><button class="settings-btn">+ 添加打印机或扫描仪</button></div>
+          <div class="settings-section"><div class="settings-toggle"><span style="font-size:13px;flex:1">Microsoft Print to PDF</span><span style="font-size:12px;color:#666">默认</span></div><div class="settings-toggle"><span style="font-size:13px;flex:1">Microsoft XPS Document Writer</span></div></div>
+        </div>
+        <div class="settings-panel" data-panel="mouse">
+          <h2>鼠标</h2>
+          <div class="settings-section"><h3>选择主按钮</h3><div class="settings-toggle"><span style="font-size:13px;flex:1">主按钮</span><span style="font-size:13px;color:#0078d4">左</span></div></div>
+          <div class="settings-section"><h3>滚动</h3><div class="settings-toggle"><span style="font-size:13px;flex:1">一次滚动的行数</span><span style="font-size:13px;color:#0078d4">3</span></div></div>
+        </div>
+        <div class="settings-panel" data-panel="typing">
+          <h2>输入</h2>
+          <div class="settings-section"><h3>拼写</h3><div class="settings-toggle"><span style="font-size:13px;flex:1">自动更正拼写错误的字词</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div><div class="settings-toggle"><span style="font-size:13px;flex:1">突出显示拼写错误的字词</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div></div>
+        </div>
+        <div class="settings-panel" data-panel="usb">
+          <h2>USB</h2>
+          <div class="settings-section"><div class="settings-toggle"><span style="font-size:13px;flex:1">在连接 USB 设备时通知我</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div></div>
+        </div>
+      </div>
+    </div>
+    <!-- ===== 网络和 Internet 页 ===== -->
+    <div class="settings-page" id="settings-page-network" style="display:none">
+      <div class="settings-sidebar">
+        <div class="settings-nav active" data-section="status"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M5 9 L8 12 L13 6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>状态</div>
+        <div class="settings-nav" data-section="ethernet"><svg viewBox="0 0 18 18"><rect x="3" y="6" width="12" height="8" rx="1" fill="none" stroke="currentColor" stroke-width="1.2"/><line x1="6" y1="10" x2="6" y2="12" stroke="currentColor" stroke-width="1"/><line x1="9" y1="10" x2="9" y2="12" stroke="currentColor" stroke-width="1"/><line x1="12" y1="10" x2="12" y2="12" stroke="currentColor" stroke-width="1"/></svg>以太网</div>
+        <div class="settings-nav" data-section="vpn"><svg viewBox="0 0 18 18"><path d="M9 2 L4 6 L4 12 C4 15 6 17 9 17 C12 17 14 15 14 12 L14 6 Z" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>VPN</div>
+        <div class="settings-nav" data-section="proxy"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="2" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1"/><ellipse cx="9" cy="9" rx="3" ry="7" fill="none" stroke="currentColor" stroke-width="1"/></svg>代理</div>
+      </div>
+      <div class="settings-content">
+        <div class="settings-panel active" data-panel="status">
+          <h2>网络状态</h2>
+          <div class="settings-section"><div class="settings-update-status" style="border-color:#107c10"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="10" fill="none" stroke="#107c10" stroke-width="2"/><path d="M7 12 L10 15 L17 8" fill="none" stroke="#107c10" stroke-width="2" stroke-linecap="round"/></svg><div><div style="font-size:14px;font-weight:600">你已连接到 Internet</div><div style="font-size:12px;color:#666;margin-top:2px">以太网</div></div></div></div>
+          <div class="settings-section"><h3>网络属性</h3><div class="settings-about-row"><span class="settings-about-label">IPv4 地址</span><span class="settings-about-value">192.168.1.100</span></div><div class="settings-about-row"><span class="settings-about-label">IPv4 DNS 服务器</span><span class="settings-about-value">192.168.1.1</span></div><div class="settings-about-row"><span class="settings-about-label">制造商</span><span class="settings-about-value">Intel</span></div><div class="settings-about-row"><span class="settings-about-label">描述</span><span class="settings-about-value">Intel(R) Ethernet Connection I219-V</span></div><div class="settings-about-row"><span class="settings-about-label">物理地址 (MAC)</span><span class="settings-about-value">A4-83-E7-2F-00-1D</span></div></div>
+        </div>
+        <div class="settings-panel" data-panel="ethernet">
+          <h2>以太网</h2>
+          <div class="settings-section"><div class="settings-toggle"><span style="font-size:14px;font-weight:500;flex:1">网络</span><span style="font-size:13px;color:#107c10">已连接</span></div></div>
+        </div>
+        <div class="settings-panel" data-panel="vpn">
+          <h2>VPN</h2>
+          <div class="settings-section"><button class="settings-btn">+ 添加 VPN 连接</button><p style="margin-top:12px;font-size:13px;color:#666">尚未设置 VPN 连接。</p></div>
+        </div>
+        <div class="settings-panel" data-panel="proxy">
+          <h2>代理</h2>
+          <div class="settings-section"><h3>自动代理设置</h3><div class="settings-toggle"><span style="font-size:13px;flex:1">自动检测设置</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div></div>
+          <div class="settings-section"><h3>手动代理设置</h3><div class="settings-toggle"><span style="font-size:13px;flex:1">使用代理服务器</span><div class="toggle-switch" onclick="this.classList.toggle('on')"></div></div></div>
+        </div>
+      </div>
+    </div>
+    <!-- ===== 账户页 ===== -->
+    <div class="settings-page" id="settings-page-accounts" style="display:none">
+      <div class="settings-sidebar">
+        <div class="settings-nav active" data-section="yourinfo"><svg viewBox="0 0 18 18"><circle cx="9" cy="7" r="4" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 16 C2 12 5 10 9 10 C13 10 16 12 16 16" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>你的信息</div>
+        <div class="settings-nav" data-section="email"><svg viewBox="0 0 18 18"><rect x="2" y="4" width="14" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M2 4 L9 10 L16 4" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>电子邮件和账户</div>
+        <div class="settings-nav" data-section="signin"><svg viewBox="0 0 18 18"><rect x="3" y="2" width="12" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="9" cy="8" r="2" fill="none" stroke="currentColor" stroke-width="1"/><line x1="9" y1="10" x2="9" y2="13" stroke="currentColor" stroke-width="1.2"/></svg>登录选项</div>
+        <div class="settings-nav" data-section="family"><svg viewBox="0 0 18 18"><circle cx="6" cy="6" r="3" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="13" cy="7" r="2.5" fill="none" stroke="currentColor" stroke-width="1.1"/><path d="M1 15 C1 11 3 10 6 10 C9 10 11 11 11 15" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>家庭和其他用户</div>
+        <div class="settings-nav" data-section="sync"><svg viewBox="0 0 18 18"><path d="M3 9 A6 6 0 0 1 15 9" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M15 9 A6 6 0 0 1 3 9" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M13 7 L15 9 L17 7" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>同步你的设置</div>
+      </div>
+      <div class="settings-content">
+        <div class="settings-panel active" data-panel="yourinfo">
+          <h2>你的信息</h2>
+          <div class="settings-section">
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px"><div class="settings-avatar"><svg viewBox="0 0 48 48"><circle cx="24" cy="18" r="10" fill="#0078d4"/><path d="M6 46 C6 34 14 28 24 28 C34 28 42 34 42 46" fill="#0078d4"/></svg></div><div><div style="font-size:18px;font-weight:300">用户</div><div style="font-size:13px;color:#666">本地账户</div><div style="font-size:13px;color:#0078d4;margin-top:4px;cursor:pointer">改为使用 Microsoft 账户登录</div></div></div>
+          </div>
+          <div class="settings-section"><h3>创建你的头像</h3><button class="settings-btn">📷 相机</button> <button class="settings-btn" style="margin-left:8px">浏览</button></div>
+        </div>
+        <div class="settings-panel" data-panel="email">
+          <h2>电子邮件和账户</h2>
+          <div class="settings-section"><p style="font-size:13px;color:#666">尚未添加其他账户。</p><button class="settings-btn" style="margin-top:8px">+ 添加账户</button></div>
+        </div>
+        <div class="settings-panel" data-panel="signin">
+          <h2>登录选项</h2>
+          <div class="settings-section"><h3>密码</h3><p style="font-size:13px;color:#666">通过密码登录你的设备</p><button class="settings-btn">更改</button></div>
+          <div class="settings-section"><h3>PIN (Windows Hello)</h3><p style="font-size:13px;color:#666">通过 PIN 快速登录</p><button class="settings-btn">添加</button></div>
+        </div>
+        <div class="settings-panel" data-panel="family">
+          <h2>家庭和其他用户</h2>
+          <div class="settings-section"><h3>其他用户</h3><button class="settings-btn">+ 将其他人添加到这台电脑</button></div>
+        </div>
+        <div class="settings-panel" data-panel="sync">
+          <h2>同步你的设置</h2>
+          <div class="settings-section"><p style="font-size:13px;color:#666">使用 Microsoft 账户登录来同步你的设置。</p></div>
+        </div>
+      </div>
+    </div>
+    <!-- ===== 时间和语言页 ===== -->
+    <div class="settings-page" id="settings-page-time" style="display:none">
+      <div class="settings-sidebar">
+        <div class="settings-nav active" data-section="datetime"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M9 5 L9 9 L12 11" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>日期和时间</div>
+        <div class="settings-nav" data-section="region"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="2" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1"/><ellipse cx="9" cy="9" rx="3" ry="7" fill="none" stroke="currentColor" stroke-width="1"/></svg>区域</div>
+        <div class="settings-nav" data-section="language"><svg viewBox="0 0 18 18"><path d="M2 3 L2 12 L5 12 L7 15 L9 12 L16 12 L16 3 Z" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="5" y1="6" x2="13" y2="6" stroke="currentColor" stroke-width="1"/><line x1="5" y1="9" x2="10" y2="9" stroke="currentColor" stroke-width="1"/></svg>语言</div>
+        <div class="settings-nav" data-section="speech"><svg viewBox="0 0 18 18"><rect x="5" y="2" width="8" height="10" rx="4" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M3 9 C3 13 6 15 9 15 C12 15 15 13 15 9" fill="none" stroke="currentColor" stroke-width="1.2"/><line x1="9" y1="15" x2="9" y2="17" stroke="currentColor" stroke-width="1.2"/></svg>语音</div>
+      </div>
+      <div class="settings-content">
+        <div class="settings-panel active" data-panel="datetime">
+          <h2>日期和时间</h2>
+          <div class="settings-section"><h3>当前日期和时间</h3><p id="settings-current-datetime" style="font-size:16px;color:#333;margin-bottom:12px"></p><div class="settings-toggle"><span style="font-size:13px;flex:1">自动设置时间</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div><div class="settings-toggle"><span style="font-size:13px;flex:1">自动设置时区</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div></div>
+          <div class="settings-section"><h3>时区</h3><div class="settings-toggle"><span style="font-size:13px;flex:1">时区</span><span style="font-size:13px;color:#0078d4">(UTC+08:00) 北京，重庆，香港特别行政区，乌鲁木齐</span></div></div>
+        </div>
+        <div class="settings-panel" data-panel="region">
+          <h2>区域</h2>
+          <div class="settings-section"><h3>国家或地区</h3><div class="settings-toggle"><span style="font-size:13px;flex:1">国家或地区</span><span style="font-size:13px;color:#0078d4">中国</span></div></div>
+          <div class="settings-section"><h3>区域格式</h3><div class="settings-toggle"><span style="font-size:13px;flex:1">当前格式</span><span style="font-size:13px;color:#0078d4">中文(中国)</span></div></div>
+        </div>
+        <div class="settings-panel" data-panel="language">
+          <h2>语言</h2>
+          <div class="settings-section"><h3>Windows 显示语言</h3><div class="settings-toggle"><span style="font-size:13px;flex:1">Windows 显示语言</span><span style="font-size:13px;color:#0078d4">中文(简体，中国)</span></div></div>
+          <div class="settings-section"><h3>首选语言</h3><div class="settings-toggle" style="padding:8px;background:#f8f8f8;border-radius:4px"><span style="font-size:13px;flex:1">中文(简体，中国) — Windows 显示语言</span></div><button class="settings-btn" style="margin-top:8px">+ 添加语言</button></div>
+        </div>
+        <div class="settings-panel" data-panel="speech">
+          <h2>语音</h2>
+          <div class="settings-section"><h3>语音语言</h3><div class="settings-toggle"><span style="font-size:13px;flex:1">语音语言</span><span style="font-size:13px;color:#0078d4">中文(简体，中国)</span></div></div>
+        </div>
+      </div>
+    </div>
+    <!-- ===== 游戏页 ===== -->
+    <div class="settings-page" id="settings-page-gaming" style="display:none">
+      <div class="settings-sidebar">
+        <div class="settings-nav active" data-section="gamebar"><svg viewBox="0 0 18 18"><rect x="2" y="5" width="14" height="8" rx="4" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="9" r="1.5" fill="none" stroke="currentColor" stroke-width="1"/></svg>Xbox Game Bar</div>
+        <div class="settings-nav" data-section="captures"><svg viewBox="0 0 18 18"><rect x="2" y="3" width="14" height="12" rx="1" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="9" cy="9" r="3" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>捕获</div>
+        <div class="settings-nav" data-section="gamemode"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M6 7 L6 11 M12 7 L12 11 M6 9 L12 9" stroke="currentColor" stroke-width="1.2"/></svg>游戏模式</div>
+      </div>
+      <div class="settings-content">
+        <div class="settings-panel active" data-panel="gamebar">
+          <h2>Xbox Game Bar</h2>
+          <div class="settings-section"><div class="settings-toggle"><span style="font-size:13px;flex:1">使用 Game Bar 录制游戏剪辑、屏幕截图和广播</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div><p style="font-size:12px;color:#666;margin-top:8px">按 Win + G 打开 Game Bar</p></div>
+        </div>
+        <div class="settings-panel" data-panel="captures">
+          <h2>捕获</h2>
+          <div class="settings-section"><h3>屏幕截图</h3><p style="font-size:13px;color:#666">屏幕截图已保存到: C:\Users\用户\Videos\Captures</p></div>
+          <div class="settings-section"><h3>录制</h3><div class="settings-toggle"><span style="font-size:13px;flex:1">在我录制游戏时在后台录制</span><div class="toggle-switch" onclick="this.classList.toggle('on')"></div></div><div class="settings-toggle"><span style="font-size:13px;flex:1">最大录制长度</span><span style="font-size:13px;color:#0078d4">2 小时</span></div></div>
+        </div>
+        <div class="settings-panel" data-panel="gamemode">
+          <h2>游戏模式</h2>
+          <div class="settings-section"><div class="settings-toggle"><span style="font-size:13px;flex:1">游戏模式</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div><p style="font-size:12px;color:#666;margin-top:8px">游戏模式有助于在游戏时获得更稳定的帧率。</p></div>
+        </div>
+      </div>
+    </div>
+    <!-- ===== 轻松使用页 ===== -->
+    <div class="settings-page" id="settings-page-ease" style="display:none">
+      <div class="settings-sidebar">
+        <div class="settings-nav active" data-section="display"><svg viewBox="0 0 18 18"><rect x="2" y="3" width="14" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="9" y1="13" x2="9" y2="15" stroke="currentColor" stroke-width="1.2"/><line x1="6" y1="15" x2="12" y2="15" stroke="currentColor" stroke-width="1.2"/></svg>显示</div>
+        <div class="settings-nav" data-section="cursor"><svg viewBox="0 0 18 18"><path d="M4 2 L4 14 L7 11 L11 16 L13 14 L9 9 L13 9 Z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>鼠标指针</div>
+        <div class="settings-nav" data-section="magnifier"><svg viewBox="0 0 18 18"><circle cx="8" cy="8" r="5" fill="none" stroke="currentColor" stroke-width="1.3"/><line x1="12" y1="12" x2="16" y2="16" stroke="currentColor" stroke-width="1.5"/></svg>放大镜</div>
+        <div class="settings-nav" data-section="narrator"><svg viewBox="0 0 18 18"><rect x="5" y="2" width="8" height="10" rx="4" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M3 9 C3 13 6 15 9 15 C12 15 15 13 15 9" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>讲述人</div>
+        <div class="settings-nav" data-section="highcontrast"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M9 2 A7 7 0 0 1 9 16 Z" fill="currentColor" opacity="0.3"/></svg>高对比度</div>
+      </div>
+      <div class="settings-content">
+        <div class="settings-panel active" data-panel="display">
+          <h2>显示</h2>
+          <div class="settings-section"><h3>使所有内容变大</h3><div class="settings-toggle"><span style="font-size:13px;flex:1">使文本变大</span></div><div style="margin-top:4px"><input type="range" min="100" max="225" value="100" style="width:100%;accent-color:#0078d4"></div></div>
+          <div class="settings-section"><h3>简化和个性化 Windows</h3><div class="settings-toggle"><span style="font-size:13px;flex:1">在 Windows 中显示动画</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div><div class="settings-toggle"><span style="font-size:13px;flex:1">显示透明度效果</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div></div>
+        </div>
+        <div class="settings-panel" data-panel="cursor"><h2>鼠标指针</h2><div class="settings-section"><h3>更改指针大小</h3><div style="margin-top:4px"><input type="range" min="1" max="15" value="1" style="width:100%;accent-color:#0078d4"></div></div></div>
+        <div class="settings-panel" data-panel="magnifier"><h2>放大镜</h2><div class="settings-section"><div class="settings-toggle"><span style="font-size:13px;flex:1">打开放大镜</span><div class="toggle-switch" onclick="this.classList.toggle('on')"></div></div></div></div>
+        <div class="settings-panel" data-panel="narrator"><h2>讲述人</h2><div class="settings-section"><div class="settings-toggle"><span style="font-size:13px;flex:1">使用讲述人</span><div class="toggle-switch" onclick="this.classList.toggle('on')"></div></div><p style="font-size:12px;color:#666;margin-top:8px">讲述人是一个屏幕阅读器，可以朗读屏幕上的文本。</p></div></div>
+        <div class="settings-panel" data-panel="highcontrast"><h2>高对比度</h2><div class="settings-section"><div class="settings-toggle"><span style="font-size:13px;flex:1">打开高对比度</span><div class="toggle-switch" onclick="this.classList.toggle('on')"></div></div></div></div>
+      </div>
+    </div>
+    <!-- ===== 隐私页 ===== -->
+    <div class="settings-page" id="settings-page-privacy" style="display:none">
+      <div class="settings-sidebar">
+        <div class="settings-nav active" data-section="general"><svg viewBox="0 0 18 18"><path d="M9 2 L4 6 L4 12 C4 15 6 17 9 17 C12 17 14 15 14 12 L14 6 Z" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>常规</div>
+        <div class="settings-nav" data-section="diagnostics"><svg viewBox="0 0 18 18"><rect x="3" y="3" width="12" height="12" rx="1" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M3 12 L7 6 L11 10 L15 4" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>诊断和反馈</div>
+        <div class="settings-nav" data-section="activityhistory"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M9 5 L9 9 L12 11" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>活动历史记录</div>
+        <div class="settings-nav" data-section="location"><svg viewBox="0 0 18 18"><path d="M9 2 C6 2 4 4.5 4 7 C4 11 9 16 9 16 C9 16 14 11 14 7 C14 4.5 12 2 9 2 Z" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="9" cy="7" r="2" fill="none" stroke="currentColor" stroke-width="1"/></svg>位置</div>
+        <div class="settings-nav" data-section="camera"><svg viewBox="0 0 18 18"><rect x="2" y="5" width="14" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="9" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M6 5 L7 3 L11 3 L12 5" fill="none" stroke="currentColor" stroke-width="1"/></svg>相机</div>
+        <div class="settings-nav" data-section="microphone"><svg viewBox="0 0 18 18"><rect x="6" y="2" width="6" height="9" rx="3" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M4 9 C4 13 6 14 9 14 C12 14 14 13 14 9" fill="none" stroke="currentColor" stroke-width="1.2"/><line x1="9" y1="14" x2="9" y2="16" stroke="currentColor" stroke-width="1.2"/></svg>麦克风</div>
+      </div>
+      <div class="settings-content">
+        <div class="settings-panel active" data-panel="general">
+          <h2>常规</h2>
+          <div class="settings-section"><div class="settings-toggle"><span style="font-size:13px;flex:1">允许应用使用广告 ID 为你显示更相关的广告</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div><div class="settings-toggle"><span style="font-size:13px;flex:1">允许网站通过访问我的语言列表来提供本地化内容</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div><div class="settings-toggle"><span style="font-size:13px;flex:1">允许 Windows 跟踪应用启动来改善开始和搜索结果</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div><div class="settings-toggle"><span style="font-size:13px;flex:1">在设置应用中向我显示建议内容</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div></div>
+        </div>
+        <div class="settings-panel" data-panel="diagnostics"><h2>诊断和反馈</h2><div class="settings-section"><h3>诊断数据</h3><div class="settings-toggle"><span style="font-size:13px;flex:1">发送可选诊断数据</span><div class="toggle-switch" onclick="this.classList.toggle('on')"></div></div></div></div>
+        <div class="settings-panel" data-panel="activityhistory"><h2>活动历史记录</h2><div class="settings-section"><div class="settings-toggle"><span style="font-size:13px;flex:1">在此设备上存储我的活动历史记录</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div></div></div>
+        <div class="settings-panel" data-panel="location"><h2>位置</h2><div class="settings-section"><div class="settings-toggle"><span style="font-size:13px;flex:1">允许应用访问你的位置</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div></div></div>
+        <div class="settings-panel" data-panel="camera"><h2>相机</h2><div class="settings-section"><div class="settings-toggle"><span style="font-size:13px;flex:1">允许应用访问你的相机</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div></div></div>
+        <div class="settings-panel" data-panel="microphone"><h2>麦克风</h2><div class="settings-section"><div class="settings-toggle"><span style="font-size:13px;flex:1">允许应用访问你的麦克风</span><div class="toggle-switch on" onclick="this.classList.toggle('on')"></div></div></div></div>
       </div>
     </div>
   </div>
