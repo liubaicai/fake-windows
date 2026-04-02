@@ -1,0 +1,49 @@
+<div id="taskbar">
+  <button id="start-btn" title="开始"><img src="icons/start.png" alt="开始"></button>
+
+  <div id="taskband">
+    <button class="taskbar-app pinned" id="tb-explorer" data-winid="explorer-win" data-app="explorer" data-location="computer" title="Windows 资源管理器">
+      <img src="icons/folder.png" alt="资源管理器">
+    </button>
+    <button class="taskbar-app pinned" id="tb-ie" data-winid="ie-win" data-app="ie" data-page="home" title="Internet Explorer">
+      <img src="icons/html.png" alt="Internet Explorer">
+    </button>
+    <button class="taskbar-app pinned" id="tb-media" data-winid="media-win" data-app="media" data-media="aero-dreams" title="Windows Media Player">
+      <img src="icons/cd.png" alt="Windows Media Player">
+    </button>
+    <button class="taskbar-app hidden" id="tb-notepad" data-winid="notepad-win" data-app="notepad" data-doc="readme" title="记事本">
+      <img src="icons/notepad.png" alt="记事本">
+    </button>
+    <button class="taskbar-app hidden" id="tb-terminal" data-winid="terminal-win" data-app="terminal" title="命令提示符">
+      <img src="icons/terminal.png" alt="命令提示符">
+    </button>
+    <button class="taskbar-app hidden" id="tb-controlpanel" data-winid="controlpanel-win" data-app="controlpanel" title="控制面板">
+      <img src="icons/background-capplet.png" alt="控制面板">
+    </button>
+    <button class="taskbar-app hidden" id="tb-taskmgr" data-winid="taskmgr-win" data-app="taskmgr" title="任务管理器">
+      <img src="icons/info.png" alt="任务管理器">
+    </button>
+  </div>
+
+  <div id="tray-area">
+    <button class="tray-button compact" id="hidden-icons-btn" title="显示隐藏的图标">▲</button>
+    <button class="tray-button" id="battery-btn" title="电源">
+      <span class="battery-shape"><span class="battery-level"></span></span>
+    </button>
+    <button class="tray-button" id="network-btn" title="Internet 访问">
+      <span class="signal-bars"><span></span><span></span><span></span><span></span></span>
+    </button>
+    <button class="tray-button" id="volume-btn" title="扬声器">
+      <span class="speaker-shape"></span>
+    </button>
+    <button class="tray-button action-center-button" id="action-center-btn" title="操作中心">
+      <img src="icons/warning.png" alt="操作中心">
+      <span class="tray-badge" id="action-center-count">2</span>
+    </button>
+    <button class="tray-button wide" id="clock-btn" title="日期和时间">
+      <span id="clock-time">00:00</span>
+      <span id="clock-date">2026/04/02</span>
+    </button>
+    <div id="show-desktop-strip" title="显示桌面"></div>
+  </div>
+</div>

@@ -1,0 +1,108 @@
+<div class="window aero-window" id="explorer-win" data-min-width="720" data-min-height="420" style="top:72px;left:116px;width:930px;height:580px">
+  <div class="resize-handle n" data-dir="n"></div>
+  <div class="resize-handle s" data-dir="s"></div>
+  <div class="resize-handle e" data-dir="e"></div>
+  <div class="resize-handle w" data-dir="w"></div>
+  <div class="resize-handle ne" data-dir="ne"></div>
+  <div class="resize-handle nw" data-dir="nw"></div>
+  <div class="resize-handle se" data-dir="se"></div>
+  <div class="resize-handle sw" data-dir="sw"></div>
+
+  <div class="window-titlebar" data-window="explorer-win">
+    <div class="window-title-wrap">
+      <img class="window-app-icon" src="icons/folder.png" alt="资源管理器">
+      <span class="window-title" id="explorer-window-title">计算机</span>
+    </div>
+    <div class="window-controls">
+      <button class="win-control minimize-btn" data-window="explorer-win" title="最小化"><img src="icons/minimize.png" alt="最小化"></button>
+      <button class="win-control maximize-btn" data-window="explorer-win" title="最大化"><img src="icons/maximize.png" alt="最大化"></button>
+      <button class="win-control close-btn close" data-window="explorer-win" title="关闭"><img src="icons/close.png" alt="关闭"></button>
+    </div>
+  </div>
+
+  <div class="menu-strip explorer-menustrip">
+    <span class="menu-command stub-action">文件</span>
+    <span class="menu-command stub-action">编辑</span>
+    <span class="menu-command stub-action">查看</span>
+    <span class="menu-command stub-action">工具</span>
+    <span class="menu-command stub-action">帮助</span>
+  </div>
+
+  <div class="window-toolbar explorer-toolbar">
+    <div class="nav-cluster explorer-nav-cluster">
+      <button class="nav-btn disabled" title="后退"><img src="icons/back.png" alt="后退"></button>
+      <button class="nav-btn disabled rotated" title="前进"><img src="icons/back.png" alt="前进"></button>
+    </div>
+    <div class="breadcrumb-bar explorer-breadcrumb-bar" id="explorer-breadcrumbs"></div>
+    <div class="window-search-shell explorer-search-shell">
+      <input id="explorer-search" type="text" autocomplete="off" spellcheck="false" placeholder="搜索">
+    </div>
+  </div>
+
+  <div class="window-toolbar explorer-commandbar">
+    <div class="command-link-group">
+      <button class="command-link explorer-organize-button stub-action" id="explorer-organize-btn">组织 ▼</button>
+      <button class="command-link stub-action">包括在库中</button>
+      <button class="command-link stub-action">共享</button>
+      <button class="command-link stub-action">刻录</button>
+      <button class="command-link" id="explorer-new-folder-btn">新建文件夹</button>
+    </div>
+    <div class="layout-spacer"></div>
+    <div class="explorer-pane-controls">
+      <button class="command-link muted" id="explorer-preview-toggle">预览窗格</button>
+      <div class="view-mode-switch">
+        <button class="view-mode-btn active" id="explorer-view-details" data-view="details">详细信息</button>
+        <button class="view-mode-btn" id="explorer-view-tiles" data-view="tiles">大图标</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="window-body explorer-layout">
+    <aside class="explorer-sidebar">
+      <div class="sidebar-group-title">收藏夹</div>
+      <button class="sidebar-link" data-location="desktop">桌面</button>
+      <button class="sidebar-link" data-location="libraries">库</button>
+      <button class="sidebar-link" data-location="documents">文档</button>
+      <button class="sidebar-link" data-location="pictures">图片</button>
+      <button class="sidebar-link" data-location="music">音乐</button>
+      <div class="sidebar-group-title">库</div>
+      <button class="sidebar-link" data-location="videos">视频</button>
+      <button class="sidebar-link" data-location="recycle-bin">回收站</button>
+      <div class="sidebar-group-title">家庭组</div>
+      <button class="sidebar-link stub-action">家庭组</button>
+      <div class="sidebar-group-title">计算机</div>
+      <button class="sidebar-link" data-location="computer">计算机</button>
+      <button class="sidebar-link" data-location="network">网络</button>
+    </aside>
+
+    <section class="explorer-main">
+      <div class="explorer-main-header">
+        <div>
+          <h2 id="explorer-location-title">计算机</h2>
+          <p id="explorer-location-subtitle">查看此计算机上的驱动器和设备。</p>
+        </div>
+        <div class="explorer-details" id="explorer-summary">2 个项目</div>
+      </div>
+      <div class="explorer-surface">
+        <div class="explorer-content-shell">
+          <div class="explorer-table-header" id="explorer-table-header">
+            <span class="col-name">名称</span>
+            <span class="col-date">修改日期</span>
+            <span class="col-type">类型</span>
+            <span class="col-size">大小</span>
+          </div>
+          <div id="explorer-list" class="explorer-table"></div>
+        </div>
+        <aside class="explorer-preview-pane show" id="explorer-preview-pane">
+          <div class="preview-pane-title">预览窗格</div>
+          <div id="explorer-preview-card" class="preview-pane-card"></div>
+        </aside>
+      </div>
+    </section>
+  </div>
+
+  <div class="window-statusbar" id="explorer-statusbar">
+    <span id="explorer-status-left">已选择 0 个项目</span>
+    <span id="explorer-status-right">详细信息</span>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="window aero-window media-window" id="media-win" data-min-width="780" data-min-height="460" style="top:96px;left:210px;width:920px;height:560px">
+  <div class="resize-handle n" data-dir="n"></div>
+  <div class="resize-handle s" data-dir="s"></div>
+  <div class="resize-handle e" data-dir="e"></div>
+  <div class="resize-handle w" data-dir="w"></div>
+  <div class="resize-handle ne" data-dir="ne"></div>
+  <div class="resize-handle nw" data-dir="nw"></div>
+  <div class="resize-handle se" data-dir="se"></div>
+  <div class="resize-handle sw" data-dir="sw"></div>
+
+  <div class="window-titlebar" data-window="media-win">
+    <div class="window-title-wrap">
+      <img class="window-app-icon" src="icons/cd.png" alt="Windows Media Player">
+      <span class="window-title">Windows Media Player</span>
+    </div>
+    <div class="window-controls">
+      <button class="win-control minimize-btn" data-window="media-win" title="最小化"><img src="icons/minimize.png" alt="最小化"></button>
+      <button class="win-control maximize-btn" data-window="media-win" title="最大化"><img src="icons/maximize.png" alt="最大化"></button>
+      <button class="win-control close-btn close" data-window="media-win" title="关闭"><img src="icons/close.png" alt="关闭"></button>
+    </div>
+  </div>
+
+  <div class="media-layout">
+    <aside class="media-sidebar">
+      <div class="media-sidebar-title">播放器库</div>
+      <button class="media-nav active">正在播放</button>
+      <button class="media-nav">音乐</button>
+      <button class="media-nav">视频</button>
+      <button class="media-nav">图片</button>
+      <button class="media-nav">刻录</button>
+      <button class="media-nav">同步</button>
+    </aside>
+
+    <section class="media-main">
+      <div class="media-hero">
+        <div>
+          <div class="media-kicker">正在播放</div>
+          <h2 id="media-now-title">Aero Dreams.mp3</h2>
+          <p id="media-now-meta">Windows Sample Library</p>
+        </div>
+        <div class="media-disc"><img src="icons/cd.png" alt="唱片"></div>
+      </div>
+      <div class="media-visualizer" id="media-visualizer"></div>
+      <div class="media-playlist" id="media-playlist"></div>
+    </section>
+  </div>
+
+  <div class="media-controls">
+    <button class="media-btn" id="media-prev">◀◀</button>
+    <button class="media-btn primary" id="media-play-toggle">播放</button>
+    <button class="media-btn" id="media-next">▶▶</button>
+    <div class="media-progress-track"><span id="media-progress"></span></div>
+  </div>
+</div>

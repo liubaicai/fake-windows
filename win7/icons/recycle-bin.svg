@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="binBody" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#eef6ff"/>
+      <stop offset="1" stop-color="#9db8d9"/>
+    </linearGradient>
+    <linearGradient id="binLid" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#d9ecff"/>
+      <stop offset="1" stop-color="#6e9fd0"/>
+    </linearGradient>
+  </defs>
+  <path d="M20 16h24l-2 36a4 4 0 0 1-4 4H26a4 4 0 0 1-4-4z" fill="url(#binBody)" stroke="#5d7ea6" stroke-width="2"/>
+  <path d="M16 14a2 2 0 0 1 2-2h28a2 2 0 0 1 2 2v4H16z" fill="url(#binLid)" stroke="#5d7ea6" stroke-width="2"/>
+  <path d="M24 12c0-3 2-5 8-5s8 2 8 5" fill="none" stroke="#5d7ea6" stroke-width="2"/>
+  <path d="M25 23c5 8 11 14 18 17" fill="none" stroke="#6dc3ff" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+  <path d="M25 35c6-4 12-9 17-16" fill="none" stroke="#9be57f" stroke-width="3" stroke-linecap="round" opacity=".75"/>
+  <path d="M31 20l2 26M40 20l-2 26" stroke="#7da0c7" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+</svg>

@@ -1,0 +1,54 @@
+<div class="window classic-window" id="taskmgr-win" data-min-width="640" data-min-height="420" style="top:124px;left:260px;width:760px;height:500px">
+  <div class="resize-handle n" data-dir="n"></div>
+  <div class="resize-handle s" data-dir="s"></div>
+  <div class="resize-handle e" data-dir="e"></div>
+  <div class="resize-handle w" data-dir="w"></div>
+  <div class="resize-handle ne" data-dir="ne"></div>
+  <div class="resize-handle nw" data-dir="nw"></div>
+  <div class="resize-handle se" data-dir="se"></div>
+  <div class="resize-handle sw" data-dir="sw"></div>
+
+  <div class="window-titlebar classic-titlebar" data-window="taskmgr-win">
+    <div class="window-title-wrap">
+      <img class="window-app-icon" src="icons/info.png" alt="任务管理器">
+      <span class="window-title">Windows 任务管理器</span>
+    </div>
+    <div class="window-controls">
+      <button class="win-control minimize-btn" data-window="taskmgr-win" title="最小化"><img src="icons/minimize.png" alt="最小化"></button>
+      <button class="win-control maximize-btn" data-window="taskmgr-win" title="最大化"><img src="icons/maximize.png" alt="最大化"></button>
+      <button class="win-control close-btn close" data-window="taskmgr-win" title="关闭"><img src="icons/close.png" alt="关闭"></button>
+    </div>
+  </div>
+
+  <div class="menu-strip compact-menu-strip">
+    <span class="menu-command stub-action">文件</span>
+    <span class="menu-command stub-action">选项</span>
+    <span class="menu-command stub-action">查看</span>
+    <span class="menu-command stub-action">帮助</span>
+  </div>
+
+  <div class="taskmgr-tabs">
+    <span class="taskmgr-tab active">应用程序</span>
+    <span class="taskmgr-tab">进程</span>
+    <span class="taskmgr-tab">服务</span>
+    <span class="taskmgr-tab">性能</span>
+  </div>
+
+  <div class="taskmgr-summary">
+    <div><strong id="taskmgr-cpu">17%</strong><span>CPU 使用率</span></div>
+    <div><strong id="taskmgr-memory">46%</strong><span>内存</span></div>
+    <div><strong id="taskmgr-process-count">8</strong><span>进程</span></div>
+  </div>
+
+  <div class="taskmgr-table-head">
+    <span class="tm-name">任务</span>
+    <span class="tm-status">状态</span>
+    <span class="tm-cpu">CPU</span>
+    <span class="tm-memory">内存</span>
+  </div>
+  <div id="taskmgr-list" class="taskmgr-table"></div>
+
+  <div class="window-statusbar taskmgr-statusbar">
+    <button id="taskmgr-end-btn" class="dialog-button secondary">结束任务</button>
+  </div>
+</div>

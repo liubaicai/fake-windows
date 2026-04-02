@@ -1,20 +1,29 @@
 # fake-windows
 
-一个使用原生 HTML、CSS、JavaScript 实现的 Windows 10 桌面模拟项目。页面通过组件化 HTML 片段动态装配，不依赖构建工具或第三方框架，适合用于界面还原、交互练习和静态演示。
+一个使用原生 HTML、CSS、JavaScript 实现的 Windows 桌面模拟项目。页面通过组件化 HTML 片段动态装配，不依赖构建工具或第三方框架，适合用于界面还原、交互练习和静态演示。
 
-当前可运行内容位于 `win10/` 目录。
+目前包含两个版本：
+
+| 目录 | 版本 | 状态 |
+|------|------|------|
+| `win10/` | Windows 10 | 功能完整 |
+| `win7/` | Windows 7 | 功能完整 |
 
 ## 项目特点
 
 - 原生前端实现，无需安装依赖。
 - 采用组件拆分方式组织页面结构，入口清晰，便于继续扩展应用窗口。
-- 还原 Windows 10 常见界面元素，包括桌面、任务栏、开始菜单、搜索面板、通知中心等。
+- Win10 还原常见界面元素，包括桌面、任务栏、开始菜单、搜索面板、通知中心等。
+- Win7 1:1 复刻经典 Aero Glass 视觉风格，包含开始菜单、系统属性、资源管理器等。
 - 支持基础窗口管理交互，包括打开、关闭、最小化、最大化、聚焦、拖拽与缩放。
-- 内置模拟应用窗口，包括文件资源管理器、记事本、PowerShell、任务管理器、设置、控制面板、Edge。
 
-## 已实现内容
+---
 
-### 桌面与系统界面
+## Windows 10 (`win10/`)
+
+### 已实现内容
+
+**桌面与系统界面**
 
 - 桌面壁纸与桌面图标
 - 开始菜单
@@ -25,7 +34,7 @@
 - 任务视图
 - 桌面、图标、任务栏右键菜单
 
-### 窗口与应用
+**窗口与应用**
 
 - 文件资源管理器
 - Microsoft Edge 窗口
@@ -35,7 +44,7 @@
 - 设置
 - 控制面板
 
-### 交互能力
+**交互能力**
 
 - 双击桌面图标打开窗口
 - 点击任务栏图标切换或恢复窗口
@@ -46,86 +55,139 @@
 - `Esc` 关闭面板类浮层
 - `Meta` 键呼出开始菜单
 
-### 模拟终端支持命令
+**模拟终端支持命令**：`cls` / `clear` / `date` / `Get-Date` / `echo` / `help` / `dir` / `ls` / `Get-ChildItem` / `whoami` / `hostname` / `ipconfig` / `systeminfo`
 
-- `cls`
-- `clear`
-- `date`
-- `Get-Date`
-- `echo`
-- `help`
-- `dir`
-- `ls`
-- `Get-ChildItem`
-- `whoami`
-- `hostname`
-- `ipconfig`
-- `systeminfo`
+---
+
+## Windows 7 (`win7/`)
+
+### 已实现内容
+
+**桌面与系统界面**
+
+- Aero Glass 风格桌面与壁纸
+- 桌面图标（计算机、回收站、库、文档、网络等）
+- 桌面小工具（时钟、日历、CPU 仪表）
+- 任务栏 Aero Glass 效果，含系统托盘与时间
+- Pin 图标区（资源管理器、IE、DVD）
+- 桌面右键菜单、图标右键菜单
+- 任务栏右键菜单
+
+**开始菜单**
+
+- Aero Glass 外观，左右双栏布局
+- 左栏：常用程序列表 + 所有程序 + 搜索框
+- 右栏：深海军蓝配色，用户头像、文档/图片/音乐/游戏/计算机/控制面板等链接
+- 关机按钮行含关机/重启等扩展菜单
+
+**窗口与应用**
+
+- 文件资源管理器（Aero Glass 标题栏、地址栏面包屑、左侧导航树、内容区、预览窗格、详细信息栏）
+- IE 浏览器窗口
+- 记事本
+- Windows 任务管理器（进程/性能/联网/用户四个选项卡）
+- 控制面板
+- 命令提示符（模拟终端，支持多条命令）
+- 系统属性窗口（计算机右键 → 属性，1:1 复刻 Win7 系统页）
+
+**系统属性窗口**
+
+- 顶部面包屑导航（控制面板 › 系统和安全 › 系统）
+- 侧边栏：控制面板主页 / 设备管理器 / 远程设置 / 系统保护 / 高级系统设置，以及"另请参阅"区（操作中心 / Windows Update / 性能信息和工具）
+- Windows 版本：版本名称 + 授权文字 + Service Pack，右侧显示 Win7 徽标
+- 系统区：WEI 分级（蓝色徽章 + Windows 体验指数链接）、处理器、内存、系统类型、笔和触摸
+- 计算机名、域和工作组设置：计算机名、完整计算机名、计算机描述、工作组，附"更改设置"按钮
+- Windows 激活状态与产品 ID
+
+**交互能力**
+
+- 双击桌面图标打开对应窗口
+- 计算机图标右键菜单含"属性"入口
+- 标题栏拖拽、最大化/还原、最小化、关闭
+- 八向窗口缩放
+- Aero Snap（拖至屏幕边缘半屏/最大化）
+- 任务栏缩略图预览
+- 开始菜单键盘快捷键
+
+---
 
 ## 快速开始
 
-这个项目是纯静态页面，但不能直接双击 `index.html` 运行。
+项目为纯静态页面，**不能直接双击 `index.html` 运行**（`fetch` 组件加载在 `file://` 下被浏览器拦截）。请使用本地 HTTP 服务。
 
-原因是 [win10/component-loader.js](win10/component-loader.js) 会通过 `fetch` 动态加载 [win10/components](win10/components) 下的 HTML 片段，浏览器在 `file://` 场景下通常会拦截这类请求。请使用本地 HTTP 服务启动。
-
-### 方式 1：使用 Python
+### 方式 1：Python
 
 ```powershell
-cd win10
+# 从项目根目录启动（同时覆盖 win10 和 win7）
 python -m http.server 8080
 ```
 
-然后在浏览器打开：
+访问：
+- Win10：`http://localhost:8080/win10/`
+- Win7：`http://localhost:8080/win7/`
 
-```text
-http://localhost:8080
-```
+### 方式 2：VS Code Live Server
 
-### 方式 2：使用 VS Code Live Server
+在 VS Code 中对 `win10/index.html` 或 `win7/index.html` 启动 Live Server 即可。
 
-直接在 VS Code 中打开 [win10/index.html](win10/index.html)，通过 Live Server 启动即可。
+---
 
 ## 目录结构
 
 ```text
 fake-windows/
 ├─ README.md
-└─ win10/
+├─ win10/
+│  ├─ index.html
+│  ├─ component-loader.js
+│  ├─ script.js
+│  ├─ style.css
+│  ├─ components/
+│  │  ├─ desktop.html
+│  │  ├─ taskbar.html
+│  │  ├─ start-menu.html
+│  │  ├─ search-panel.html
+│  │  ├─ explorer.html
+│  │  ├─ notepad.html
+│  │  ├─ terminal.html
+│  │  ├─ taskmgr.html
+│  │  ├─ settings.html
+│  │  ├─ edge.html
+│  │  ├─ controlpanel.html
+│  │  ├─ action-center.html
+│  │  ├─ context-menus.html
+│  │  ├─ popups.html
+│  │  └─ overlays.html
+│  └─ icons/
+└─ win7/
    ├─ index.html
    ├─ component-loader.js
    ├─ script.js
    ├─ style.css
-   ├─ desktop.jpg
    ├─ components/
    │  ├─ desktop.html
    │  ├─ taskbar.html
    │  ├─ start-menu.html
-   │  ├─ search-panel.html
    │  ├─ explorer.html
-   │  ├─ notepad.html
-   │  ├─ terminal.html
-   │  ├─ taskmgr.html
-   │  ├─ settings.html
-   │  ├─ edge.html
-   │  ├─ controlpanel.html
-   │  ├─ action-center.html
+   │  ├─ dialogs.html
    │  ├─ context-menus.html
-   │  ├─ popups.html
    │  └─ overlays.html
    └─ icons/
 ```
 
 ## 核心文件说明
 
-- [win10/index.html](win10/index.html)：页面入口，通过 `data-component` 占位符声明需要装配的界面组件。
-- [win10/component-loader.js](win10/component-loader.js)：负责加载组件 HTML，并在全部组件就绪后再挂载主逻辑脚本。
-- [win10/script.js](win10/script.js)：核心交互逻辑，包含窗口管理、菜单/弹层控制、终端模拟、设置页切换等行为。
-- [win10/style.css](win10/style.css)：整体视觉样式与窗口、桌面、任务栏等界面布局。
-- [win10/components](win10/components)：拆分后的各个界面片段，方便按模块维护。
+每个版本的文件职责相同：
+
+- `index.html`：页面入口，通过 `data-component` 占位符声明需要装配的界面组件。
+- `component-loader.js`：负责加载组件 HTML，并在全部组件就绪后再挂载主逻辑脚本。
+- `script.js`：核心交互逻辑，包含窗口管理、菜单/弹层控制、右键路由、系统属性填充等行为。
+- `style.css`：整体视觉样式，包含窗口、桌面、任务栏、开始菜单、系统属性等所有界面布局。
+- `components/`：拆分后的各个界面片段，方便按模块维护。
 
 ## 适合做什么
 
-- Windows 10 UI 临摹与前端练习
+- Windows UI 临摹与前端练习
 - 原生 JavaScript 交互示例
 - 静态展示型作品集或教学 Demo
 - 扩展更多“系统应用”窗口的实验底座

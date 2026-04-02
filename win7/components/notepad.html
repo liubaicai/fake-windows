@@ -1,0 +1,40 @@
+<div class="window classic-window" id="notepad-win" data-min-width="520" data-min-height="380" style="top:110px;left:230px;width:760px;height:500px">
+  <div class="resize-handle n" data-dir="n"></div>
+  <div class="resize-handle s" data-dir="s"></div>
+  <div class="resize-handle e" data-dir="e"></div>
+  <div class="resize-handle w" data-dir="w"></div>
+  <div class="resize-handle ne" data-dir="ne"></div>
+  <div class="resize-handle nw" data-dir="nw"></div>
+  <div class="resize-handle se" data-dir="se"></div>
+  <div class="resize-handle sw" data-dir="sw"></div>
+
+  <div class="window-titlebar classic-titlebar" data-window="notepad-win">
+    <div class="window-title-wrap">
+      <img class="window-app-icon" src="icons/notepad.png" alt="记事本">
+      <span class="window-title" id="notepad-title">无标题 - 记事本</span>
+    </div>
+    <div class="window-controls">
+      <button class="win-control minimize-btn" data-window="notepad-win" title="最小化"><img src="icons/minimize.png" alt="最小化"></button>
+      <button class="win-control maximize-btn" data-window="notepad-win" title="最大化"><img src="icons/maximize.png" alt="最大化"></button>
+      <button class="win-control close-btn close" data-window="notepad-win" title="关闭"><img src="icons/close.png" alt="关闭"></button>
+    </div>
+  </div>
+
+  <div class="menu-strip">
+    <span class="menu-command stub-action">文件</span>
+    <span class="menu-command stub-action">编辑</span>
+    <span class="menu-command stub-action">格式</span>
+    <span class="menu-command stub-action">查看</span>
+    <span class="menu-command stub-action">帮助</span>
+  </div>
+
+  <div class="notepad-body">
+    <textarea id="notepad-text" spellcheck="false"></textarea>
+  </div>
+
+  <div class="window-statusbar notepad-statusbar">
+    <span id="notepad-status">第 1 行，第 1 列</span>
+    <span>Windows (CRLF)</span>
+    <span>UTF-8</span>
+  </div>
+</div>

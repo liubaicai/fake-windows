@@ -1,0 +1,132 @@
+<div class="window aero-window" id="controlpanel-win" data-min-width="760" data-min-height="460" style="top:86px;left:180px;width:920px;height:560px">
+  <div class="resize-handle n" data-dir="n"></div>
+  <div class="resize-handle s" data-dir="s"></div>
+  <div class="resize-handle e" data-dir="e"></div>
+  <div class="resize-handle w" data-dir="w"></div>
+  <div class="resize-handle ne" data-dir="ne"></div>
+  <div class="resize-handle nw" data-dir="nw"></div>
+  <div class="resize-handle se" data-dir="se"></div>
+  <div class="resize-handle sw" data-dir="sw"></div>
+
+  <div class="window-titlebar" data-window="controlpanel-win">
+    <div class="window-title-wrap">
+      <img class="window-app-icon" src="icons/background-capplet.png" alt="控制面板">
+      <span class="window-title">控制面板</span>
+    </div>
+    <div class="window-controls">
+      <button class="win-control minimize-btn" data-window="controlpanel-win" title="最小化"><img src="icons/minimize.png" alt="最小化"></button>
+      <button class="win-control maximize-btn" data-window="controlpanel-win" title="最大化"><img src="icons/maximize.png" alt="最大化"></button>
+      <button class="win-control close-btn close" data-window="controlpanel-win" title="关闭"><img src="icons/close.png" alt="关闭"></button>
+    </div>
+  </div>
+
+  <div class="window-toolbar explorer-toolbar compact-toolbar">
+    <div class="breadcrumb-bar compact">
+      <span class="crumb static">控制面板</span>
+      <span class="crumb-sep">›</span>
+      <span class="crumb static">所有控制面板项</span>
+    </div>
+    <div class="layout-spacer"></div>
+    <div class="window-search-shell compact-search">
+      <input type="text" value="搜索控制面板" readonly>
+    </div>
+  </div>
+
+  <div class="controlpanel-body">
+    <div class="controlpanel-shell">
+      <aside class="controlpanel-sidebar">
+        <div class="cp-sidebar-title">控制面板主页</div>
+        <button class="cp-side-link" data-open="personalization">更改桌面主题</button>
+        <button class="cp-side-link" data-open="display">调整屏幕分辨率</button>
+        <button class="cp-side-link" data-open="explorer" data-location="network">查看网络状态和任务</button>
+        <button class="cp-side-link" data-open="taskmgr">查看系统信息</button>
+        <div class="cp-sidebar-title">查看方式</div>
+        <div class="cp-view-badge">类别</div>
+      </aside>
+
+      <section class="controlpanel-main">
+        <div class="controlpanel-header controlpanel-header-rich">
+          <div>
+            <h2>调整计算机的设置</h2>
+            <p>在类别中浏览常用设置，或直接打开右侧的具体任务。</p>
+          </div>
+          <div class="controlpanel-view-mode">查看方式: <strong>类别</strong></div>
+        </div>
+
+        <div class="controlpanel-category-list">
+          <button class="cp-category" data-open="taskmgr">
+            <img src="icons/info.png" alt="系统和安全">
+            <div class="cp-category-copy">
+              <span>系统和安全</span>
+              <small>查看任务管理器、备份、Windows Update 和系统状态。</small>
+              <div class="cp-category-links">
+                <span class="cp-category-link" data-open="taskmgr">任务管理器</span>
+                <span class="cp-category-link" data-open="ie" data-page="help">帮助和支持</span>
+              </div>
+            </div>
+          </button>
+
+          <button class="cp-category" data-open="explorer" data-location="network">
+            <img src="icons/drive.png" alt="网络和 Internet">
+            <div class="cp-category-copy">
+              <span>网络和 Internet</span>
+              <small>查看网络状态、共享设备和连接诊断。</small>
+              <div class="cp-category-links">
+                <span class="cp-category-link" data-open="explorer" data-location="network">网络和共享中心</span>
+                <span class="cp-category-link" data-open="ie" data-page="help">Internet 选项</span>
+              </div>
+            </div>
+          </button>
+
+          <button class="cp-category" data-open="display">
+            <img src="icons/display.png" alt="硬件和声音">
+            <div class="cp-category-copy">
+              <span>硬件和声音</span>
+              <small>调整屏幕、电源计划和设备相关设置。</small>
+              <div class="cp-category-links">
+                <span class="cp-category-link" data-open="display">屏幕分辨率</span>
+                <span class="cp-category-link" data-open="display">电源选项</span>
+              </div>
+            </div>
+          </button>
+
+          <button class="cp-category" data-open="personalization">
+            <img src="icons/background-capplet.png" alt="外观和个性化">
+            <div class="cp-category-copy">
+              <span>外观和个性化</span>
+              <small>更改 Aero 主题、壁纸和桌面小工具外观。</small>
+              <div class="cp-category-links">
+                <span class="cp-category-link" data-open="personalization">个性化</span>
+                <span class="cp-category-link" data-open="explorer" data-location="libraries">任务栏和开始菜单</span>
+              </div>
+            </div>
+          </button>
+
+          <button class="cp-category" data-open="notepad" data-doc="readme">
+            <img src="icons/notepad.png" alt="程序">
+            <div class="cp-category-copy">
+              <span>程序</span>
+              <small>管理默认程序和可选功能。</small>
+              <div class="cp-category-links">
+                <span class="cp-category-link" data-open="notepad" data-doc="readme">默认程序</span>
+                <span class="cp-category-link" data-open="ie" data-page="downloads">下载的程序</span>
+              </div>
+            </div>
+          </button>
+
+          <button class="cp-category" data-open="ie" data-page="help">
+            <img src="icons/info.png" alt="轻松访问">
+            <div class="cp-category-copy">
+              <span>轻松访问</span>
+              <small>打开帮助中心并查看辅助功能入口。</small>
+              <div class="cp-category-links">
+                <span class="cp-category-link" data-open="ie" data-page="help">帮助和支持</span>
+                <span class="cp-category-link" data-open="taskmgr">系统工具</span>
+              </div>
+            </div>
+          </button>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

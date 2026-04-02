@@ -1,0 +1,80 @@
+<div class="tray-popup" id="hidden-icons-popup">
+  <div class="hidden-icon-grid">
+    <button class="hidden-icon"><img src="icons/github.png" alt="GitHub"><span>GitHub</span></button>
+    <button class="hidden-icon"><img src="icons/drive.png" alt="同步中心"><span>同步中心</span></button>
+    <button class="hidden-icon"><img src="icons/info.png" alt="操作中心"><span>操作中心</span></button>
+    <button class="hidden-icon"><img src="icons/cd.png" alt="媒体共享"><span>媒体共享</span></button>
+  </div>
+</div>
+
+<div class="tray-popup" id="network-popup">
+  <div class="popup-title">当前连接到</div>
+  <div class="network-entry connected">
+    <div>
+      <strong>Windows7 Wi-Fi</strong>
+      <span>Internet 访问</span>
+    </div>
+    <button>断开</button>
+  </div>
+  <div class="network-entry">
+    <div>
+      <strong>开发者热点</strong>
+      <span>安全，已启用</span>
+    </div>
+    <button>连接</button>
+  </div>
+  <div class="popup-divider"></div>
+  <button class="popup-link-button">打开网络和共享中心</button>
+  <button class="popup-link-button">疑难解答</button>
+</div>
+
+<div class="tray-popup" id="volume-popup">
+  <div class="popup-title">混音器</div>
+  <div class="popup-subtitle">扬声器 / Realtek High Definition Audio</div>
+  <div class="volume-row">
+    <span>扬声器</span>
+    <input id="volume-range" type="range" min="0" max="100" value="68">
+    <strong id="volume-value">68</strong>
+  </div>
+  <div class="mixer-app-list">
+    <div class="mixer-app-row"><span>系统声音</span><span>72</span></div>
+    <div class="mixer-app-row"><span>Windows Media Player</span><span>54</span></div>
+    <div class="mixer-app-row"><span>Internet Explorer</span><span>41</span></div>
+  </div>
+</div>
+
+<div class="tray-popup" id="battery-popup">
+  <div class="popup-title">电源计划</div>
+  <div class="battery-summary">
+    <div class="battery-big-indicator"><span>84%</span><small>剩余</small></div>
+    <div class="battery-meta">
+      <strong>平衡</strong>
+      <span>还可使用 3 小时 18 分</span>
+      <span>已接通电源，正在充电</span>
+    </div>
+  </div>
+  <div class="popup-divider"></div>
+  <button class="popup-link-button">更多电源选项</button>
+</div>
+
+<div class="tray-popup" id="action-center-popup">
+  <div class="popup-title-row">
+    <div>
+      <div class="popup-title">操作中心</div>
+      <div class="popup-subtitle" id="action-center-state">2 条重要消息</div>
+    </div>
+    <img src="icons/warning.png" alt="操作中心">
+  </div>
+  <div id="action-center-list" class="action-center-list"></div>
+  <div class="popup-divider"></div>
+  <button class="popup-link-button" id="action-center-open">打开操作中心</button>
+</div>
+
+<div class="tray-popup" id="calendar-popup"></div>
+
+<div class="tray-popup" id="power-popup">
+  <button class="power-item" data-power="sleep">睡眠</button>
+  <button class="power-item" data-power="restart">重新启动</button>
+  <button class="power-item" data-power="shutdown">关机</button>
+  <button class="power-item" data-power="lock">锁定</button>
+</div>

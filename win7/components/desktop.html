@@ -1,0 +1,81 @@
+<div id="desktop">
+  <div id="desktop-icons" class="icon-medium">
+    <button class="desktop-icon" data-name="计算机" data-open="explorer" data-location="computer" data-kind="系统文件夹" data-icon="icons/my-computer.png">
+      <span class="desktop-icon-image"><img src="icons/my-computer.png" alt="计算机"></span>
+      <span class="desktop-icon-label">计算机</span>
+    </button>
+    <button class="desktop-icon" data-name="回收站" data-open="explorer" data-location="recycle-bin" data-kind="系统文件夹" data-icon="icons/recycle-bin.svg">
+      <span class="desktop-icon-image"><img src="icons/recycle-bin.svg" alt="回收站"></span>
+      <span class="desktop-icon-label">回收站</span>
+    </button>
+    <button class="desktop-icon" data-name="库" data-open="explorer" data-location="libraries" data-kind="系统文件夹" data-icon="icons/folder.png">
+      <span class="desktop-icon-image"><img src="icons/folder.png" alt="库"></span>
+      <span class="desktop-icon-label">库</span>
+    </button>
+    <button class="desktop-icon" data-name="文档" data-open="explorer" data-location="documents" data-kind="库" data-icon="icons/folder.png">
+      <span class="desktop-icon-image"><img src="icons/folder.png" alt="文档"></span>
+      <span class="desktop-icon-label">文档</span>
+    </button>
+    <button class="desktop-icon" data-name="网络" data-open="explorer" data-location="network" data-kind="网络位置" data-icon="icons/drive.png">
+      <span class="desktop-icon-image"><img src="icons/drive.png" alt="网络"></span>
+      <span class="desktop-icon-label">网络</span>
+    </button>
+    <button class="desktop-icon" data-name="Internet Explorer" data-open="ie" data-page="home" data-kind="应用程序" data-icon="icons/html.png">
+      <span class="desktop-icon-image"><img src="icons/html.png" alt="Internet Explorer"></span>
+      <span class="desktop-icon-label">Internet Explorer</span>
+    </button>
+    <button class="desktop-icon" data-name="记事本" data-open="notepad" data-doc="readme" data-kind="应用程序" data-icon="icons/notepad.png">
+      <span class="desktop-icon-image"><img src="icons/notepad.png" alt="记事本"></span>
+      <span class="desktop-icon-label">记事本</span>
+    </button>
+    <button class="desktop-icon" data-name="命令提示符" data-open="terminal" data-kind="应用程序" data-icon="icons/terminal.png">
+      <span class="desktop-icon-image"><img src="icons/terminal.png" alt="命令提示符"></span>
+      <span class="desktop-icon-label">命令提示符</span>
+    </button>
+    <button class="desktop-icon" data-name="音乐" data-open="media" data-media="aero-dreams" data-kind="媒体库" data-icon="icons/mp3.png">
+      <span class="desktop-icon-image"><img src="icons/mp3.png" alt="音乐"></span>
+      <span class="desktop-icon-label">音乐</span>
+    </button>
+    <button class="desktop-icon" data-name="GitHub" data-open="ie" data-page="github" data-kind="快捷方式" data-icon="icons/github.png">
+      <span class="desktop-icon-image"><img src="icons/github.png" alt="GitHub"></span>
+      <span class="desktop-icon-label">GitHub</span>
+    </button>
+    <button class="desktop-icon" data-name="README.txt" data-open="notepad" data-doc="readme" data-kind="文本文档" data-icon="icons/txt.png">
+      <span class="desktop-icon-image"><img src="icons/txt.png" alt="README.txt"></span>
+      <span class="desktop-icon-label">README.txt</span>
+    </button>
+  </div>
+
+  <div id="gadget-bar">
+    <button class="gadget gadget-clock" id="clock-gadget" data-gadget="calendar">
+      <div class="gadget-header"><span>时钟</span><span class="gadget-dot"></span></div>
+      <div class="gadget-clock-face">
+        <span class="clock-hand hour" id="gadget-hour-hand"></span>
+        <span class="clock-hand minute" id="gadget-minute-hand"></span>
+        <span class="clock-hand second" id="gadget-second-hand"></span>
+        <span class="clock-center-dot"></span>
+      </div>
+      <div class="gadget-clock-text" id="gadget-clock-text">12:00</div>
+    </button>
+
+    <button class="gadget gadget-calendar" id="calendar-gadget" data-gadget="calendar">
+      <div class="gadget-header"><span>日历</span><span class="gadget-dot"></span></div>
+      <div class="gadget-calendar-card">
+        <div class="gadget-calendar-month" id="gadget-calendar-month">四月</div>
+        <div class="gadget-calendar-day" id="gadget-calendar-day">02</div>
+        <div class="gadget-calendar-week" id="gadget-calendar-week">星期四</div>
+      </div>
+    </button>
+
+    <button class="gadget gadget-meter" id="meter-gadget" data-gadget="taskmgr">
+      <div class="gadget-header"><span>CPU 仪表</span><span class="gadget-dot warning"></span></div>
+      <div class="gadget-meter-bars" id="gadget-meter-bars"></div>
+      <div class="gadget-meter-meta">
+        <span id="gadget-cpu-label">CPU 18%</span>
+        <span id="gadget-ram-label">RAM 46%</span>
+      </div>
+    </button>
+  </div>
+</div>
+
+<div id="selection-box"></div>

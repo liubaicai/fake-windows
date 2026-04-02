@@ -1,0 +1,91 @@
+<div id="start-menu">
+  <div class="start-glass">
+    <div class="start-main">
+      <div class="start-left-panel">
+        <div class="start-programs" id="start-programs">
+          <button class="start-program has-submenu" data-open="ie" data-page="home">
+            <img src="icons/html.png" alt="Internet Explorer">
+            <span class="start-program-label">Internet Explorer</span>
+            <span class="start-program-arrow">▶</span>
+          </button>
+          <button class="start-program" data-open="explorer" data-location="computer">
+            <img src="icons/folder.png" alt="资源管理器">
+            <span class="start-program-label">Windows 资源管理器</span>
+          </button>
+          <button class="start-program has-submenu" data-open="media" data-media="aero-dreams">
+            <img src="icons/cd.png" alt="媒体播放器">
+            <span class="start-program-label">Windows Media Player</span>
+            <span class="start-program-arrow">▶</span>
+          </button>
+          <button class="start-program" data-open="notepad" data-doc="readme">
+            <img src="icons/notepad.png" alt="记事本">
+            <span class="start-program-label">记事本</span>
+          </button>
+          <button class="start-program" data-open="terminal">
+            <img src="icons/terminal.png" alt="命令提示符">
+            <span class="start-program-label">命令提示符</span>
+          </button>
+          <button class="start-program" data-open="taskmgr">
+            <img src="icons/info.png" alt="任务管理器">
+            <span class="start-program-label">任务管理器</span>
+          </button>
+          <button class="start-program all-programs-only" data-open="controlpanel">
+            <img src="icons/background-capplet.png" alt="控制面板">
+            <span class="start-program-label">控制面板</span>
+          </button>
+          <button class="start-program all-programs-only" data-open="personalization">
+            <img src="icons/background-capplet.png" alt="个性化">
+            <span class="start-program-label">个性化</span>
+          </button>
+          <button class="start-program all-programs-only" data-open="display">
+            <img src="icons/display.png" alt="屏幕分辨率">
+            <span class="start-program-label">屏幕分辨率</span>
+          </button>
+          <button class="start-program all-programs-only" data-open="ie" data-page="github">
+            <img src="icons/github.png" alt="GitHub">
+            <span class="start-program-label">GitHub</span>
+          </button>
+          <button class="start-program all-programs-only" data-open="ie" data-page="help">
+            <img src="icons/info.png" alt="帮助和支持">
+            <span class="start-program-label">帮助和支持</span>
+          </button>
+        </div>
+        <button id="start-all-programs" class="start-footer-link">
+          <span>所有程序</span>
+          <span class="menu-arrow">▶</span>
+        </button>
+        <div class="start-search-row">
+          <input id="start-search" type="text" autocomplete="off" spellcheck="false" placeholder="搜索程序和文件">
+        </div>
+        <div id="start-search-empty">没有找到匹配项。</div>
+      </div>
+
+      <div class="start-right-panel">
+        <div class="start-user-card">
+          <div class="start-user-frame">
+            <div class="user-avatar">BC</div>
+          </div>
+          <div class="start-user-name">baicai</div>
+        </div>
+        <div class="start-links">
+          <button class="start-link" data-open="explorer" data-location="documents"><span>文档</span></button>
+          <button class="start-link" data-open="explorer" data-location="pictures"><span>图片</span></button>
+          <button class="start-link" data-open="explorer" data-location="music"><span>音乐</span></button>
+          <div class="start-links-divider" aria-hidden="true"></div>
+          <button class="start-link" data-open="properties" data-name="游戏" data-kind="系统文件夹" data-icon="icons/cd.png"><span>游戏</span></button>
+          <button class="start-link" data-open="explorer" data-location="computer"><span>计算机</span></button>
+          <div class="start-links-divider" aria-hidden="true"></div>
+          <button class="start-link" data-open="controlpanel"><span>控制面板</span></button>
+          <button class="start-link" data-open="display"><span>设备和打印机</span></button>
+          <button class="start-link" data-open="display"><span>默认程序</span></button>
+          <div class="start-links-divider" aria-hidden="true"></div>
+          <button class="start-link" data-open="ie" data-page="help"><span>帮助和支持</span></button>
+        </div>
+        <div class="shutdown-row">
+          <button id="shutdown-main">关机</button>
+          <button id="shutdown-arrow" aria-label="电源选项">▶</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

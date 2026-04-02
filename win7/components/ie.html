@@ -1,0 +1,75 @@
+<div class="window aero-window browser-window" id="ie-win" data-min-width="760" data-min-height="480" style="top:92px;left:180px;width:980px;height:600px">
+  <div class="resize-handle n" data-dir="n"></div>
+  <div class="resize-handle s" data-dir="s"></div>
+  <div class="resize-handle e" data-dir="e"></div>
+  <div class="resize-handle w" data-dir="w"></div>
+  <div class="resize-handle ne" data-dir="ne"></div>
+  <div class="resize-handle nw" data-dir="nw"></div>
+  <div class="resize-handle se" data-dir="se"></div>
+  <div class="resize-handle sw" data-dir="sw"></div>
+
+  <div class="window-titlebar" data-window="ie-win">
+    <div class="window-title-wrap">
+      <img class="window-app-icon" src="icons/html.png" alt="Internet Explorer">
+      <span class="window-title" id="ie-window-title">Windows Internet Explorer</span>
+    </div>
+    <div class="window-controls">
+      <button class="win-control minimize-btn" data-window="ie-win" title="最小化"><img src="icons/minimize.png" alt="最小化"></button>
+      <button class="win-control maximize-btn" data-window="ie-win" title="最大化"><img src="icons/maximize.png" alt="最大化"></button>
+      <button class="win-control close-btn close" data-window="ie-win" title="关闭"><img src="icons/close.png" alt="关闭"></button>
+    </div>
+  </div>
+
+  <div class="menu-strip ie-menustrip">
+    <span class="menu-command stub-action">文件</span>
+    <span class="menu-command stub-action">编辑</span>
+    <span class="menu-command stub-action">查看</span>
+    <span class="menu-command stub-action">收藏夹</span>
+    <span class="menu-command stub-action">工具</span>
+    <span class="menu-command stub-action">帮助</span>
+  </div>
+
+  <div class="ie-chrome-row">
+    <div class="nav-cluster">
+      <button class="nav-btn disabled" title="后退"><img src="icons/back.png" alt="后退"></button>
+      <button class="nav-btn disabled rotated" title="前进"><img src="icons/back.png" alt="前进"></button>
+      <button class="nav-btn" id="ie-home-btn" title="主页">⌂</button>
+    </div>
+    <div class="ie-address-shell">
+      <label for="ie-address-bar">地址</label>
+      <input id="ie-address-bar" type="text" autocomplete="off" spellcheck="false">
+      <button id="ie-go-btn">转到</button>
+    </div>
+    <div class="ie-search-shell">
+      <input type="text" value="Bing" readonly>
+    </div>
+  </div>
+
+  <div class="ie-command-row">
+    <button class="ie-command" data-page="home">主页</button>
+    <button class="ie-command" data-page="favorites">收藏夹中心</button>
+    <button class="ie-command" data-page="downloads">下载</button>
+    <button class="ie-command" data-page="help">帮助</button>
+    <div class="layout-spacer"></div>
+    <button class="ie-command stub-action">打印</button>
+    <button class="ie-command" id="ie-refresh-btn">刷新</button>
+  </div>
+
+  <div class="ie-favorites-bar">
+    <span class="favorites-bar-label">收藏夹栏</span>
+    <button class="ie-favorite-link" data-page="home">Windows</button>
+    <button class="ie-favorite-link" data-page="github">GitHub</button>
+    <button class="ie-favorite-link" data-page="help">帮助和支持</button>
+  </div>
+
+  <div class="ie-tabs-bar">
+    <div class="ie-tab active" id="ie-tab-label">新建选项卡</div>
+  </div>
+
+  <div class="browser-surface" id="ie-content"></div>
+
+  <div class="window-statusbar ie-statusbar">
+    <span id="ie-status-text">Internet</span>
+    <span>保护模式: 已启用</span>
+  </div>
+</div>

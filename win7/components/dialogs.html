@@ -1,0 +1,237 @@
+<div class="window aero-window dialog-window" id="personalization-win" data-min-width="620" data-min-height="420" style="top:118px;left:320px;width:680px;height:470px">
+  <div class="window-titlebar" data-window="personalization-win">
+    <div class="window-title-wrap">
+      <img class="window-app-icon" src="icons/background-capplet.png" alt="个性化">
+      <span class="window-title">个性化</span>
+    </div>
+    <div class="window-controls">
+      <button class="win-control close-btn close" data-window="personalization-win" title="关闭"><img src="icons/close.png" alt="关闭"></button>
+    </div>
+  </div>
+  <div class="dialog-body personalization-body">
+    <div class="dialog-section-title">Aero 主题</div>
+    <div class="theme-grid">
+      <button class="theme-card active" data-theme="default">
+        <span class="theme-preview default"></span>
+        <span>Windows 7</span>
+      </button>
+      <button class="theme-card" data-theme="forest">
+        <span class="theme-preview forest"></span>
+        <span>森林微光</span>
+      </button>
+      <button class="theme-card" data-theme="sunset">
+        <span class="theme-preview sunset"></span>
+        <span>落日琥珀</span>
+      </button>
+    </div>
+    <div class="dialog-section-title">桌面背景</div>
+    <div class="wallpaper-preview">
+      <div class="wallpaper-screen"></div>
+      <div class="wallpaper-caption">当前壁纸: Windows 7 默认桌面</div>
+    </div>
+  </div>
+  <div class="dialog-footer">
+    <button class="dialog-button secondary close-dialog" data-window="personalization-win">关闭</button>
+  </div>
+</div>
+
+<div class="window aero-window dialog-window" id="display-win" data-min-width="540" data-min-height="360" style="top:150px;left:380px;width:580px;height:390px">
+  <div class="window-titlebar" data-window="display-win">
+    <div class="window-title-wrap">
+      <img class="window-app-icon" src="icons/display.png" alt="屏幕分辨率">
+      <span class="window-title">屏幕分辨率</span>
+    </div>
+    <div class="window-controls">
+      <button class="win-control close-btn close" data-window="display-win" title="关闭"><img src="icons/close.png" alt="关闭"></button>
+    </div>
+  </div>
+  <div class="dialog-body display-body">
+    <div class="display-preview">
+      <div class="display-monitor"></div>
+    </div>
+    <label class="field-row">
+      <span>显示器</span>
+      <select>
+        <option>通用即插即用监视器</option>
+      </select>
+    </label>
+    <label class="field-row">
+      <span>分辨率</span>
+      <input id="resolution-range" type="range" min="0" max="4" value="4">
+      <strong id="resolution-label">1920 × 1080</strong>
+    </label>
+    <label class="field-row">
+      <span>方向</span>
+      <select>
+        <option>横向</option>
+        <option>纵向</option>
+      </select>
+    </label>
+  </div>
+  <div class="dialog-footer">
+    <button class="dialog-button" id="display-apply">应用</button>
+    <button class="dialog-button secondary close-dialog" data-window="display-win">关闭</button>
+  </div>
+</div>
+
+<div class="window aero-window dialog-window properties-window general-mode" id="properties-win" data-min-width="440" data-min-height="280" style="top:180px;left:430px;width:500px;height:320px">
+  <div class="resize-handle n" data-dir="n"></div>
+  <div class="resize-handle s" data-dir="s"></div>
+  <div class="resize-handle e" data-dir="e"></div>
+  <div class="resize-handle w" data-dir="w"></div>
+  <div class="resize-handle ne" data-dir="ne"></div>
+  <div class="resize-handle nw" data-dir="nw"></div>
+  <div class="resize-handle se" data-dir="se"></div>
+  <div class="resize-handle sw" data-dir="sw"></div>
+
+  <div class="window-titlebar" data-window="properties-win">
+    <div class="window-title-wrap">
+      <img class="window-app-icon" id="properties-icon" src="icons/info.png" alt="属性">
+      <span class="window-title" id="properties-title">属性</span>
+    </div>
+    <div class="window-controls">
+      <button class="win-control minimize-btn" data-window="properties-win" title="最小化"><img src="icons/minimize.png" alt="最小化"></button>
+      <button class="win-control maximize-btn" data-window="properties-win" title="最大化"><img src="icons/maximize.png" alt="最大化"></button>
+      <button class="win-control close-btn close" data-window="properties-win" title="关闭"><img src="icons/close.png" alt="关闭"></button>
+    </div>
+  </div>
+
+  <div class="properties-system-shell" id="properties-system-view">
+    <div class="window-toolbar explorer-toolbar compact-toolbar properties-toolbar">
+      <div class="nav-cluster explorer-nav-cluster">
+        <button class="nav-btn disabled" title="后退"><img src="icons/back.png" alt="后退"></button>
+        <button class="nav-btn disabled rotated" title="前进"><img src="icons/back.png" alt="前进"></button>
+      </div>
+      <div class="breadcrumb-bar compact properties-breadcrumbs">
+        <span class="crumb static">控制面板</span>
+        <span class="crumb-sep">›</span>
+        <span class="crumb static">系统和安全</span>
+        <span class="crumb-sep">›</span>
+        <span class="crumb static">系统</span>
+      </div>
+      <div class="layout-spacer"></div>
+      <div class="window-search-shell compact-search">
+        <input type="text" value="搜索控制面板" readonly>
+      </div>
+    </div>
+
+    <div class="properties-system-body">
+      <aside class="properties-system-sidebar">
+        <button class="properties-side-link" data-open="controlpanel">控制面板主页</button>
+        <button class="properties-side-link stub-action">设备管理器</button>
+        <button class="properties-side-link stub-action">远程设置</button>
+        <button class="properties-side-link stub-action">系统保护</button>
+        <button class="properties-side-link stub-action">高级系统设置</button>
+        <div class="properties-side-section-label">另请参阅</div>
+        <button class="properties-side-link stub-action">操作中心</button>
+        <button class="properties-side-link stub-action">Windows Update</button>
+        <button class="properties-side-link stub-action">性能信息和工具</button>
+      </aside>
+
+      <section class="properties-system-main">
+        <header class="properties-page-header">
+          <h2>查看有关计算机的基本信息</h2>
+        </header>
+
+        <section class="properties-section">
+          <h3 class="properties-section-heading">Windows 版本</h3>
+          <div class="properties-edition-row">
+            <div class="properties-edition-text">
+              <div class="properties-edition-name" id="system-edition-name">Windows 7 旗舰版</div>
+              <p class="properties-edition-copyright">版权所有 © 2009 Microsoft Corporation。保留所有权利。</p>
+              <div class="properties-edition-pack" id="system-service-pack">Service Pack 1</div>
+            </div>
+            <div class="properties-win-logo">
+              <img src="icons/start.png" alt="Windows 7" class="properties-win-flag">
+            </div>
+          </div>
+        </section>
+
+        <section class="properties-section">
+          <h3 class="properties-section-heading">系统</h3>
+          <dl class="properties-definition-list sys-dl">
+            <div>
+              <dt>分级</dt>
+              <dd class="properties-wei-row">
+                <span class="properties-wei-badge" id="system-rating-score">4.9</span>
+                <button class="properties-inline-link stub-action">Windows 体验指数</button>
+              </dd>
+            </div>
+            <div>
+              <dt>处理器</dt>
+              <dd id="system-processor">Intel(R) Core(TM) i5-4570 CPU @ 3.20GHz 3.20 GHz</dd>
+            </div>
+            <div>
+              <dt>已安装内存(RAM)</dt>
+              <dd id="system-memory">4.00 GB</dd>
+            </div>
+            <div>
+              <dt>系统类型</dt>
+              <dd id="system-type">64 位操作系统</dd>
+            </div>
+            <div>
+              <dt>笔和触摸</dt>
+              <dd id="system-pen-touch">没有可用于此显示器的笔或触控输入</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="properties-section">
+          <h3 class="properties-section-heading">计算机名、域和工作组设置</h3>
+          <div class="properties-row properties-computer-row">
+            <dl class="properties-definition-list compact">
+              <div>
+                <dt>计算机名</dt>
+                <dd id="system-computer-name">DESKTOP-BC</dd>
+              </div>
+              <div>
+                <dt>完整计算机名</dt>
+                <dd id="system-full-name">DESKTOP-BC</dd>
+              </div>
+              <div>
+                <dt>计算机描述</dt>
+                <dd id="system-computer-desc"></dd>
+              </div>
+              <div>
+                <dt>工作组</dt>
+                <dd id="system-workgroup">WORKGROUP</dd>
+              </div>
+            </dl>
+            <button class="properties-action-button stub-action">更改设置</button>
+          </div>
+        </section>
+
+        <section class="properties-section">
+          <h3 class="properties-section-heading">Windows 激活</h3>
+          <div class="properties-row properties-activation-row">
+            <div class="properties-activation-copy">
+              <div class="properties-activation-state" id="system-activation-state">Windows 已激活</div>
+              <div class="properties-product-id" id="system-product-id">产品 ID: 00426-OEM-8992662-00497</div>
+            </div>
+            <button class="properties-action-button stub-action">联机获取更多详细信息</button>
+          </div>
+        </section>
+      </section>
+    </div>
+  </div>
+
+  <div class="properties-general-shell" id="properties-general-view">
+    <div class="dialog-body properties-body">
+      <div class="properties-hero">
+        <img id="properties-preview" src="icons/info.png" alt="预览">
+        <div>
+          <h3 id="properties-name">项目</h3>
+          <p id="properties-kind">类型</p>
+        </div>
+      </div>
+      <div class="properties-grid">
+        <div>位置</div><div id="properties-location">桌面</div>
+        <div>创建时间</div><div id="properties-created">2026/04/02 10:30</div>
+        <div>说明</div><div id="properties-description">Windows 7 桌面项目</div>
+      </div>
+    </div>
+    <div class="dialog-footer">
+      <button class="dialog-button secondary close-dialog" data-window="properties-win">确定</button>
+    </div>
+  </div>
+</div>
