@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Icon } from "../../utils/general";
+import { sendActionLog } from "../../utils/log";
 
 export const StartMenu = () => {
   const { align } = useSelector((state) => state.taskbar);
@@ -71,6 +72,7 @@ export const StartMenu = () => {
     };
 
     if (action.type) {
+      sendActionLog(action.type);
       dispatch(action);
     }
 

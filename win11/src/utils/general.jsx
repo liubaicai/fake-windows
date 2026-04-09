@@ -8,6 +8,8 @@ import * as FaIcons from "@fortawesome/free-solid-svg-icons";
 import * as FaRegIcons from "@fortawesome/free-regular-svg-icons";
 import * as AllIcons from "./icons";
 
+import { sendActionLog } from "./log";
+
 String.prototype.strip = function (c) {
   var i = 0,
     j = this.length - 1;
@@ -51,6 +53,7 @@ export const Icon = (props) => {
     };
 
     if (action.type) {
+      sendActionLog(action.type);
       dispatch(action);
     }
   };

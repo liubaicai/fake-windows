@@ -27,6 +27,7 @@ var { taskbar, desktop, pinned, recent } = {
     "文件资源管理器",
     "Store",
     "Microsoft Edge",
+    "注册表编辑器",
   ]),
   pinned: sanitizeList("pinned", [
     "Microsoft Edge",
@@ -41,6 +42,7 @@ var { taskbar, desktop, pinned, recent } = {
     "文件资源管理器",
     "终端",
     "相机",
+    "注册表编辑器",
   ]),
   recent: sanitizeList("recent", [
     "邮件",

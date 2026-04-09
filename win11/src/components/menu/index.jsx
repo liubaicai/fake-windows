@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Icon } from "../../utils/general";
+import { sendActionLog } from "../../utils/log";
 import "./menu.scss";
 
 import * as Actions from "../../actions";
@@ -48,6 +49,7 @@ export const ActMenu = () => {
     };
 
     if (action.type) {
+      sendActionLog(action.type);
       if (action.type != action.type.toUpperCase()) {
         Actions[action.type](action.payload, menu);
       } else {

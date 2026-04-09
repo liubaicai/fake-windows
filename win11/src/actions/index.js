@@ -3,6 +3,9 @@ import store from "../reducers";
 import { dfApps } from "../utils";
 import { gene_name } from "../utils/apps";
 
+import { sendActionLog } from "../utils/log";
+export { sendActionLog };
+
 export const dispatchAction = (event) => {
   const action = {
     type: event.target.dataset.action,
@@ -10,6 +13,7 @@ export const dispatchAction = (event) => {
   };
 
   if (action.type) {
+    sendActionLog(action.type);
     store.dispatch(action);
   }
 };
@@ -93,7 +97,10 @@ export const performApp = (act, menu) => {
   };
 
   if (act == "open") {
-    if (data.type) store.dispatch(data);
+    if (data.type) {
+      sendActionLog(data.type);
+      store.dispatch(data);
+    }
   } else if (act == "delshort") {
     if (data.type) {
       var apps = store.getState().apps;
@@ -180,6 +187,7 @@ export const changeTheme = () => {
   var thm = store.getState().setting.person.theme,
     thm = thm == "light" ? "dark" : "light";
   var icon = thm == "light" ? "sun" : "moon";
+  if (window.__sendLog) window.__sendLog("切换主题");
 
   document.body.dataset.theme = thm;
   store.dispatch({ type: "STNGTHEME", payload: thm });

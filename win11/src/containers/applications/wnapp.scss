@@ -160,6 +160,14 @@ body[data-theme="dark"] .calcApp {
   --focus-bg: rgba(0, 183, 255, 0.25);
 }
 
+.regeditApp {
+  background: var(--fakeMica);
+}
+
+body[data-theme="dark"] .regeditApp {
+  background: var(--fakeMica);
+}
+
 body[data-theme="dark"] .msfiles {
   --bg1: #191919;
   --bg2: #1c1c1c;

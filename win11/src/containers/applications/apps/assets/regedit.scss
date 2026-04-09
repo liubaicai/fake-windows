@@ -1,0 +1,294 @@
+.regeditApp {
+  --bg1: #ffffff;
+  --bg2: #f0f0f0;
+  --tree-bg: #ffffff;
+  --list-bg: #ffffff;
+  --border-col: #d4d4d4;
+  --sel-bg: #cde8ff;
+  --sel-border: #99d1ff;
+  --hover-bg: #e5f3ff;
+  --menubar-bg: #f0f0f0;
+  --addr-bg: #ffffff;
+  --addr-border: #7a7a7a;
+  --status-bg: #f0f0f0;
+  --status-border: #d4d4d4;
+
+  background: var(--bg2);
+  color: var(--dark-txt);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+
+  .windowScreen {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .regedit-menubar {
+    display: flex;
+    background: var(--menubar-bg);
+    border-bottom: 1px solid var(--border-col);
+    padding: 2px 0;
+    font-size: 12px;
+    flex-shrink: 0;
+
+    .menu-item {
+      padding: 2px 8px;
+      cursor: default;
+      position: relative;
+
+      &:hover {
+        background: var(--hover-bg);
+      }
+
+      .underline {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .regedit-addressbar {
+    display: flex;
+    align-items: center;
+    padding: 3px 4px;
+    background: var(--menubar-bg);
+    border-bottom: 1px solid var(--border-col);
+    flex-shrink: 0;
+    gap: 4px;
+    font-size: 12px;
+
+    .addr-label {
+      white-space: nowrap;
+      margin-right: 2px;
+    }
+
+    .addr-input {
+      flex: 1;
+      border: 1px solid var(--addr-border);
+      padding: 1px 4px;
+      font-size: 12px;
+      font-family: "Segoe UI", sans-serif;
+      background: var(--addr-bg);
+      color: var(--dark-txt);
+      outline: none;
+      height: 22px;
+      box-sizing: border-box;
+
+      &:focus {
+        border-color: #0078d7;
+      }
+    }
+  }
+
+  .regedit-body {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .regedit-tree {
+    width: 220px;
+    min-width: 150px;
+    background: var(--tree-bg);
+    border-right: 1px solid var(--border-col);
+    overflow: auto;
+    padding: 2px 0;
+    font-size: 12px;
+    flex-shrink: 0;
+    user-select: none;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 4px;
+    }
+  }
+
+  .reg-tree-node {
+    .reg-tree-label {
+      display: flex;
+      align-items: center;
+      padding: 1px 0;
+      cursor: default;
+      white-space: nowrap;
+
+      &:hover {
+        background: var(--hover-bg);
+      }
+
+      &.selected {
+        background: var(--sel-bg);
+        outline: 1px dotted #000;
+      }
+
+      .toggle-icon {
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 8px;
+        color: #555;
+      }
+
+      .folder-icon {
+        width: 16px;
+        height: 16px;
+        margin-right: 3px;
+        flex-shrink: 0;
+      }
+
+      .node-name {
+        padding-right: 8px;
+      }
+    }
+
+    .reg-tree-children {
+      padding-left: 16px;
+    }
+  }
+
+  .regedit-values {
+    flex: 1;
+    background: var(--list-bg);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 4px;
+    }
+  }
+
+  .regedit-values-header {
+    display: flex;
+    background: var(--menubar-bg);
+    border-bottom: 1px solid var(--border-col);
+    font-size: 12px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    .col-header {
+      padding: 2px 6px;
+      border-right: 1px solid var(--border-col);
+      cursor: default;
+      font-weight: normal;
+      box-sizing: border-box;
+
+      &.col-name {
+        width: 200px;
+        min-width: 120px;
+      }
+
+      &.col-type {
+        width: 120px;
+        min-width: 80px;
+      }
+
+      &.col-data {
+        flex: 1;
+        min-width: 200px;
+        border-right: none;
+      }
+    }
+  }
+
+  .regedit-values-body {
+    flex: 1;
+
+    .value-row {
+      display: flex;
+      padding: 1px 0;
+      cursor: default;
+
+      &:hover {
+        background: var(--hover-bg);
+      }
+
+      &.selected {
+        background: var(--sel-bg);
+      }
+
+      .value-cell {
+        padding: 1px 6px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        &.col-name {
+          width: 200px;
+          min-width: 120px;
+        }
+
+        &.col-type {
+          width: 120px;
+          min-width: 80px;
+        }
+
+        &.col-data {
+          flex: 1;
+          min-width: 200px;
+        }
+
+        .val-icon {
+          width: 16px;
+          height: 16px;
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+
+  .regedit-statusbar {
+    display: flex;
+    padding: 2px 6px;
+    background: var(--status-bg);
+    border-top: 1px solid var(--status-border);
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .regedit-splitter {
+    width: 3px;
+    cursor: col-resize;
+    background: var(--border-col);
+    flex-shrink: 0;
+
+    &:hover {
+      background: #aaa;
+    }
+  }
+}
+
+body[data-theme="dark"] .regeditApp {
+  --bg1: #1e1e1e;
+  --bg2: #2d2d2d;
+  --tree-bg: #1e1e1e;
+  --list-bg: #1e1e1e;
+  --border-col: #444;
+  --sel-bg: #094771;
+  --sel-border: #0078d7;
+  --hover-bg: #2a2d2e;
+  --menubar-bg: #2d2d2d;
+  --addr-bg: #3c3c3c;
+  --addr-border: #555;
+  --status-bg: #2d2d2d;
+  --status-border: #444;
+}

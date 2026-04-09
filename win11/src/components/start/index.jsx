@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as Actions from "../../actions";
 import { getTreeValue } from "../../actions";
+import { sendActionLog } from "../../utils/log";
 import { Icon } from "../../utils/general";
 import Battery from "../shared/Battery";
 import "./searchpane.scss";
@@ -117,6 +118,7 @@ export const SidePane = () => {
     };
 
     if (action.type) {
+      sendActionLog(action.type);
       if (action.type != action.type.toUpperCase()) {
         Actions[action.type](action.payload);
       } else dispatch(action);

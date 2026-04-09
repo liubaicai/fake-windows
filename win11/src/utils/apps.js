@@ -243,6 +243,12 @@ const apps = [
     icon: "cortana",
     type: "app",
   },
+  {
+    name: "注册表编辑器",
+    icon: "reg",
+    type: "app",
+    action: "REGEDIT",
+  },
 ];
 
 for (let i = 0; i < installed.length; i++) {

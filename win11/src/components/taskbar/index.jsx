@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Icon } from "../../utils/general";
+import { sendActionLog } from "../../utils/log";
 import Battery from "../shared/Battery";
 import "./taskbar.scss";
 
@@ -48,6 +49,7 @@ const Taskbar = () => {
     };
 
     if (action.type) {
+      sendActionLog(action.type);
       dispatch(action);
     }
   };
