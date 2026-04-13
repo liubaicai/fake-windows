@@ -1,9 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { ToolBar } from "../../../utils/general";
 
 export const Notepad = () => {
   const wnapp = useSelector((state) => state.apps.notepad);
+  const fileItem = useSelector((state) =>
+    wnapp.fileId ? state.files.data.getId(wnapp.fileId) : null,
+  );
+  const [draft, setDraft] = useState("");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (fileItem) {
+      setDraft(fileItem.data || "");
+    } else if (!wnapp.fileId) {
+      setDraft("");
+    }
+  }, [fileItem, wnapp.fileId]);
+
+  const handleChange = (event) => {
+    var value = event.target.value;
+    setDraft(value);
+
+    if (wnapp.fileId) {
+      dispatch({
+        type: "FILEUPDATE",
+        payload: {
+          id: wnapp.fileId,
+          data: value,
+        },
+      });
+    }
+  };
+
+  var content = wnapp.fileId ? fileItem?.data || "" : draft;
+  var title = fileItem?.name || "无标题";
 
   return (
     <div
@@ -21,7 +52,7 @@ export const Notepad = () => {
         app={wnapp.action}
         icon={wnapp.icon}
         size={wnapp.size}
-        name="无标题 - 记事本"
+        name={`${title} - 记事本`}
       />
       <div className="windowScreen flex flex-col" data-dock="true">
         <div className="flex text-xs py-2 topBar">
@@ -31,7 +62,12 @@ export const Notepad = () => {
         </div>
         <div className="restWindow h-full flex-grow">
           <div className="w-full h-full overflow-hidden">
-            <textarea className="noteText win11Scroll" id="textpad" />
+            <textarea
+              className="noteText win11Scroll"
+              id="textpad"
+              value={content}
+              onChange={handleChange}
+            />
           </div>
         </div>
       </div>

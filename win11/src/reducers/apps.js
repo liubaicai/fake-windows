@@ -44,6 +44,37 @@ const appReducer = (state = defState, action) => {
     obj.z = tmpState.hz;
     tmpState["edge"] = obj;
     return tmpState;
+  } else if (action.type == "NOTEPADFILE") {
+    var obj = { ...tmpState["notepad"] };
+    obj.fileId = action.payload;
+
+    obj.size = getOpenSize(obj.size);
+    obj.hide = false;
+    obj.max = true;
+    tmpState.hz += 1;
+    obj.z = tmpState.hz;
+    tmpState["notepad"] = obj;
+    return tmpState;
+  } else if (action.type == "NOTEPAD" && action.payload == "full") {
+    var obj = { ...tmpState["notepad"] };
+    obj.fileId = null;
+
+    obj.size = getOpenSize(obj.size);
+    obj.hide = false;
+    obj.max = true;
+    tmpState.hz += 1;
+    obj.z = tmpState.hz;
+    tmpState["notepad"] = obj;
+    return tmpState;
+  } else if (action.type == "FILEDELETE") {
+    if (tmpState.notepad.fileId == action.payload.id) {
+      tmpState.notepad = {
+        ...tmpState.notepad,
+        fileId: null,
+      };
+    }
+
+    return tmpState;
   } else if (action.type == "SHOWDSK") {
     var keys = Object.keys(tmpState);
 

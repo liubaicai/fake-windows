@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./i18nextConf";
 import "./index.css";
 
+import DialogHost from "./components/dialogs";
 import ActMenu from "./components/menu";
 import {
   BandPane,
@@ -100,16 +101,17 @@ function App() {
   window.oncontextmenu = (e) => {
     afterMath(e);
     e.preventDefault();
+    var target = e.target.closest?.("[data-menu]") || e.target;
     // dispatch({ type: 'GARBAGE'});
     var data = {
       top: e.clientY,
       left: e.clientX,
     };
 
-    if (e.target.dataset.menu != null) {
-      data.menu = e.target.dataset.menu;
-      data.attr = e.target.attributes;
-      data.dataset = e.target.dataset;
+    if (target.dataset.menu != null) {
+      data.menu = target.dataset.menu;
+      data.attr = target.attributes;
+      data.dataset = target.dataset;
       dispatch({
         type: "MENUSHOW",
         payload: data,
@@ -152,6 +154,7 @@ function App() {
           </div>
           <Taskbar />
           <ActMenu />
+          <DialogHost />
         </div>
       </ErrorBoundary>
     </div>

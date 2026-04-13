@@ -4,6 +4,34 @@ import { Icon, Image, ToolBar } from "../../../utils/general";
 import { dispatchAction, handleFileOpen } from "../../../actions";
 import "./assets/fileexpo.scss";
 
+const getLocationMeta = (item) => {
+  if (item == null) {
+    return {
+      title: "",
+      icon: "folder",
+    };
+  }
+
+  if (item.info?.spid == "%cdrive%") {
+    return {
+      title: "系统 (C:)",
+      icon: "disc",
+    };
+  }
+
+  if (item.info?.spid == "%ddrive%") {
+    return {
+      title: "软件 (D:)",
+      icon: "disk",
+    };
+  }
+
+  return {
+    title: item.name,
+    icon: item.info?.icon || (item.type == "text" ? "docs" : "folder"),
+  };
+};
+
 const NavTitle = (props) => {
   var src = props.icon || "folder";
 
@@ -51,10 +79,7 @@ const FolderDrop = ({ dir }) => {
 const Dropdown = (props) => {
   const [open, setOpen] = useState(props.isDropped != null);
   const special = useSelector((state) => state.files.data.special);
-  const [fid, setFID] = useState(() => {
-    if (props.spid) return special[props.spid];
-    else return props.dir;
-  });
+  const fid = props.spid ? special[props.spid] : props.dir;
   const toggle = () => setOpen(!open);
 
   return (
@@ -93,10 +118,16 @@ const Dropdown = (props) => {
 };
 
 export const Explorer = () => {
-  const apps = useSelector((state) => state.apps);
   const wnapp = useSelector((state) => state.apps.explorer);
   const files = useSelector((state) => state.files);
-  const fdata = files.data.getId(files.cdir);
+  const fdata = files.data.getId(files.cdir) || {
+    id: null,
+    name: "",
+    info: { icon: "folder" },
+    data: [],
+    host: null,
+    type: "folder",
+  };
   const [cpath, setPath] = useState(files.cpath);
   const [searchtxt, setShText] = useState("");
   const dispatch = useDispatch();
@@ -113,9 +144,37 @@ export const Explorer = () => {
   const DirCont = () => {
     var arr = [],
       curr = fdata,
-      index = 0;
+      index = 0,
+      chain = [];
 
     while (curr) {
+      chain.unshift(curr);
+      curr = curr.host;
+    }
+
+    var cmeta = getLocationMeta(fdata);
+
+    arr.push(
+      <div key={index++} className="dirCont flex items-center">
+        <Icon className="pr-1 pb-px" src={"win/" + cmeta.icon + "-sm"} width={16} />
+      </div>,
+    );
+
+    arr.push(
+      <div key={index++} className="dirCont flex items-center">
+        <div className="dncont" tabIndex="-1">
+          This PC
+        </div>
+        {chain.length ? (
+          <Icon className="dirchev" fafa="faChevronRight" width={8} />
+        ) : null}
+      </div>,
+    );
+
+    chain.forEach((item, itemIndex) => {
+      var meta = getLocationMeta(item);
+      var isLast = itemIndex == chain.length - 1;
+
       arr.push(
         <div key={index++} className="dirCont flex items-center">
           <div
@@ -123,40 +182,20 @@ export const Explorer = () => {
             onClick={dispatchAction}
             tabIndex="-1"
             data-action="FILEDIR"
-            data-payload={curr.id}
+            data-payload={item.id}
           >
-            {curr.name}
+            {meta.title}
           </div>
-          <Icon className="dirchev" fafa="faChevronRight" width={8} />
+          {!isLast ? (
+            <Icon className="dirchev" fafa="faChevronRight" width={8} />
+          ) : null}
         </div>,
       );
-
-      curr = curr.host;
-    }
-
-    arr.push(
-      <div key={index++} className="dirCont flex items-center">
-        <div className="dncont" tabIndex="-1">
-          This PC
-        </div>
-        <Icon className="dirchev" fafa="faChevronRight" width={8} />
-      </div>,
-    );
-
-    arr.push(
-      <div key={index++} className="dirCont flex items-center">
-        <Icon
-          className="pr-1 pb-px"
-          src={"win/" + fdata.info.icon + "-sm"}
-          width={16}
-        />
-        <Icon className="dirchev" fafa="faChevronRight" width={8} />
-      </div>,
-    );
+    });
 
     return (
       <div key={index++} className="dirfbox h-full flex">
-        {arr.reverse()}
+        {arr}
       </div>
     );
   };
@@ -267,22 +306,42 @@ export const Explorer = () => {
 
 const ContentArea = ({ searchtxt }) => {
   const files = useSelector((state) => state.files);
-  const special = useSelector((state) => state.files.data.special);
   const [selected, setSelect] = useState(null);
-  const fdata = files.data.getId(files.cdir);
+  const fdata = files.data.getId(files.cdir) || {
+    data: [],
+    type: "folder",
+  };
   const dispatch = useDispatch();
+  const viewMode = files.view == 5 ? "list" : "lg";
+
+  const sortedItems = [...fdata.data]
+    .filter((item) => item.name.includes(searchtxt))
+    .sort((a, b) => {
+      if (a.type != b.type) {
+        return a.type == "folder" ? -1 : 1;
+      }
+
+      if (files.sort == "type") {
+        var atype = a.type == "folder" ? "folder" : a.name.split(".").pop();
+        var btype = b.type == "folder" ? "folder" : b.name.split(".").pop();
+        var typeRes = atype.localeCompare(btype, "zh-CN", { numeric: true });
+        if (typeRes != 0) return typeRes;
+      }
+
+      return a.name.localeCompare(b.name, "zh-CN", { numeric: true });
+    });
 
   const handleClick = (e) => {
     e.stopPropagation();
-    setSelect(e.target.dataset.id);
+    setSelect(e.currentTarget.dataset.id);
   };
 
   const handleDouble = (e) => {
     e.stopPropagation();
-    handleFileOpen(e.target.dataset.id);
+    handleFileOpen(e.currentTarget.dataset.id);
   };
 
-  const emptyClick = (e) => {
+  const emptyClick = () => {
     setSelect(null);
   };
 
@@ -298,24 +357,30 @@ const ContentArea = ({ searchtxt }) => {
       onClick={emptyClick}
       onKeyDown={handleKey}
       tabIndex="-1"
+      data-menu="fsbg"
+      data-dir={files.cdir}
     >
       <div className="contentwrap win11Scroll">
-        <div className="gridshow" data-size="lg">
-          {fdata.data.map((item, i) => {
+        <div className="gridshow" data-size={viewMode}>
+          {sortedItems.map((item) => {
             return (
-              item.name.includes(searchtxt) && (
-                <div
-                  key={i}
-                  className="conticon hvtheme flex flex-col items-center prtclk"
-                  data-id={item.id}
-                  data-focus={selected == item.id}
-                  onClick={handleClick}
-                  onDoubleClick={handleDouble}
-                >
-                  <Image src={`icon/win/${item.info.icon}`} />
-                  <span>{item.name}</span>
-                </div>
-              )
+              <div
+                key={item.id}
+                className={
+                  "conticon hvtheme prtclk flex " +
+                  (viewMode == "list"
+                    ? "flex-row items-center justify-start w-full"
+                    : "flex-col items-center")
+                }
+                data-id={item.id}
+                data-menu="fsitem"
+                data-focus={selected == item.id}
+                onClick={handleClick}
+                onDoubleClick={handleDouble}
+              >
+                <Image src={`icon/win/${item.info.icon}`} />
+                <span>{item.name}</span>
+              </div>
             );
           })}
         </div>
@@ -328,9 +393,6 @@ const ContentArea = ({ searchtxt }) => {
 };
 
 const NavPane = ({}) => {
-  const files = useSelector((state) => state.files);
-  const special = useSelector((state) => state.files.data.special);
-
   return (
     <div className="navpane win11Scroll">
       <div className="extcont">

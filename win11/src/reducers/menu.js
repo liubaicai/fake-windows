@@ -19,6 +19,14 @@ const defState = {
       width: "310px",
       secwid: "200px",
     },
+    fsbg: {
+      width: "260px",
+      secwid: "190px",
+    },
+    fsitem: {
+      width: "250px",
+      secwid: "180px",
+    },
   },
   menus: {
     desk: [
@@ -91,15 +99,21 @@ const defState = {
         opts: [
           {
             name: "文件夹",
+            action: "createFsItem",
+            payload: "folder",
           },
           {
             name: "快捷方式",
+            dsb: true,
           },
           {
             name: "文本文档",
+            action: "createFsItem",
+            payload: "text",
           },
           {
             name: "ZIP 压缩文件",
+            dsb: true,
           },
         ],
       },
@@ -242,6 +256,178 @@ const defState = {
         name: "删除",
         action: "delApp",
         payload: "delete",
+      },
+    ],
+    fsbg: [
+      {
+        name: "查看",
+        icon: "ui/view",
+        opts: [
+          {
+            name: "大图标",
+            action: "changeFileView",
+            payload: "1",
+            dot: true,
+          },
+          {
+            name: "列表",
+            action: "changeFileView",
+            payload: "5",
+          },
+        ],
+      },
+      {
+        name: "排序方式",
+        icon: "ui/sort",
+        opts: [
+          {
+            name: "名称",
+            action: "changeFileSort",
+            payload: "name",
+            dot: true,
+          },
+          {
+            name: "类型",
+            action: "changeFileSort",
+            payload: "type",
+          },
+        ],
+      },
+      {
+        name: "分组依据",
+        icon: "ui/more",
+        opts: [
+          {
+            name: "无",
+            dsb: true,
+          },
+          {
+            name: "名称",
+            dsb: true,
+          },
+          {
+            name: "类型",
+            dsb: true,
+          },
+        ],
+      },
+      {
+        type: "hr",
+      },
+      {
+        name: "粘贴",
+        icon: "ui/paste",
+        dsb: true,
+      },
+      {
+        name: "粘贴快捷方式",
+        icon: "ui/link",
+        dsb: true,
+      },
+      {
+        type: "hr",
+      },
+      {
+        name: "刷新",
+        icon: "ui/refresh",
+        action: "refreshFsView",
+      },
+      {
+        type: "hr",
+      },
+      {
+        name: "新建",
+        icon: "ui/new",
+        opts: [
+          {
+            name: "文件夹",
+            action: "createFsItem",
+            payload: "folder",
+          },
+          {
+            name: "文本文档",
+            action: "createFsItem",
+            payload: "text",
+          },
+          {
+            name: "快捷方式",
+            dsb: true,
+          },
+          {
+            name: "ZIP 压缩文件",
+            dsb: true,
+          },
+        ],
+      },
+      {
+        type: "hr",
+      },
+      {
+        name: "在终端中打开",
+        type: "fa",
+        icon: "faTerminal",
+        action: "openFsTerminal",
+      },
+      {
+        name: "属性",
+        icon: "win/info",
+        action: "showFsProperties",
+      },
+    ],
+    fsitem: [
+      {
+        name: "打开",
+        action: "openFsItem",
+        type: "fa",
+        icon: "faArrowUpRightFromSquare",
+        iwidth: 15,
+      },
+      {
+        name: "在终端中打开",
+        action: "openFsTerminal",
+        type: "fa",
+        icon: "faTerminal",
+      },
+      {
+        type: "hr",
+      },
+      {
+        name: "剪切",
+        icon: "ui/cut",
+        dsb: true,
+      },
+      {
+        name: "复制",
+        icon: "ui/copy",
+        dsb: true,
+      },
+      {
+        name: "复制为路径",
+        icon: "ui/copy",
+        action: "copyFsPath",
+      },
+      {
+        type: "hr",
+      },
+      {
+        name: "重命名",
+        action: "renameFsItem",
+        icon: "ui/rename",
+      },
+      {
+        name: "删除",
+        action: "deleteFsItem",
+        type: "fa",
+        icon: "faTrashCan",
+        iwidth: 15,
+      },
+      {
+        type: "hr",
+      },
+      {
+        name: "属性",
+        action: "showFsProperties",
+        icon: "win/info",
       },
     ],
   },

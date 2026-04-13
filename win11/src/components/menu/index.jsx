@@ -43,9 +43,11 @@ export const ActMenu = () => {
 
   const clickDispatch = (event) => {
     event.stopPropagation();
+    if (event.currentTarget.dataset.dsb === "true") return;
+
     var action = {
-      type: event.target.dataset.action,
-      payload: event.target.dataset.payload,
+      type: event.currentTarget.dataset.action,
+      payload: event.currentTarget.dataset.payload,
     };
 
     if (action.type) {
@@ -77,13 +79,13 @@ export const ActMenu = () => {
             {menudata.ispace != false ? (
               <div className="spcont">
                 {opt.icon && opt.type == "svg" ? (
-                  <Icon icon={opt.icon} width={16} />
+                  <Icon icon={opt.icon} width={opt.iwidth || 16} />
                 ) : null}
                 {opt.icon && opt.type == "fa" ? (
-                  <Icon fafa={opt.icon} width={16} />
+                  <Icon fafa={opt.icon} width={opt.iwidth || 16} />
                 ) : null}
                 {opt.icon && opt.type == null ? (
-                  <Icon src={opt.icon} width={16} />
+                  <Icon src={opt.icon} width={opt.iwidth || 16} />
                 ) : null}
               </div>
             ) : null}

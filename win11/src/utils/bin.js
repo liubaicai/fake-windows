@@ -2,9 +2,10 @@ export class Item {
   constructor({ type, name, info, data, host }) {
     this.type = type || "folder";
     this.name = name;
-    this.info = info || {};
-    this.info.icon = this.info.icon || this.type;
-    this.data = data;
+    this.info = { ...(info || {}) };
+    this.info.icon =
+      this.info.icon || (this.type === "text" ? "docs" : this.type);
+    this.data = this.type === "folder" ? data || [] : data ?? "";
     this.host = host;
     this.id = this.gene();
   }
@@ -54,7 +55,10 @@ export class Bin {
       curr = curr.host;
     }
 
-    return cpath.count("\\") > 1 ? cpath.strip("\\") : cpath;
+    return cpath
+      .split("\\")
+      .filter((part) => part !== "")
+      .join("\\");
   }
 
   parsePath(cpath) {
@@ -103,9 +107,123 @@ export class Bin {
     return pid;
   }
 
-  parseFolder(data, name, host = null) {
+  findItemByName(parentId, name) {
+    var parent = this.getId(parentId);
+    if (parent == null || parent.type !== "folder") return null;
+
+    return parent.data.find((item) => item.name === name) || null;
+  }
+
+  hasName(parentId, name, excludeId = null) {
+    var parent = this.getId(parentId);
+    if (parent == null || parent.type !== "folder") return false;
+
+    var lname = name.toLowerCase();
+    return parent.data.some(
+      (item) => item.id !== excludeId && item.name.toLowerCase() === lname,
+    );
+  }
+
+  createItem(parentId, data) {
+    var parent = this.getId(parentId);
+    if (parent == null || parent.type !== "folder") return null;
+
     var item = new Item({
       type: data.type,
+      name: data.name,
+      info: data.info,
+      data: data.type === "folder" ? [] : data.data,
+      host: parent,
+    });
+
+    this.setId(item.id, item);
+    parent.setData([...parent.getData(), item]);
+
+    return item;
+  }
+
+  renameItem(id, name) {
+    var item = this.getId(id);
+    if (item == null) return null;
+
+    item.name = name;
+    return item;
+  }
+
+  updateItemData(id, data) {
+    var item = this.getId(id);
+    if (item == null || item.type === "folder") return null;
+
+    item.setData(data);
+    return item;
+  }
+
+  removeItem(id) {
+    var item = this.getId(id);
+    if (item == null || item.host == null) return null;
+
+    item.host.setData(item.host.getData().filter((child) => child.id !== id));
+    this.removeLookup(item);
+    return item;
+  }
+
+  removeLookup(item) {
+    if (item.type === "folder") {
+      item.data.forEach((child) => this.removeLookup(child));
+    }
+
+    Object.keys(this.special).forEach((key) => {
+      if (this.special[key] === item.id) {
+        delete this.special[key];
+      }
+    });
+
+    delete this.lookup[item.id];
+  }
+
+  toJSON() {
+    var output = {};
+
+    const serializeItem = (item) => {
+      var node = {};
+
+      if (item.type !== "folder") {
+        node.type = item.type;
+      }
+
+      if (item.info && Object.keys(item.info).length) {
+        node.info = { ...item.info };
+      }
+
+      if (item.type === "folder") {
+        if (item.data.length) {
+          node.data = {};
+          item.data.forEach((child) => {
+            node.data[child.name] = serializeItem(child);
+          });
+        }
+      } else {
+        node.data = item.data ?? "";
+      }
+
+      return node;
+    };
+
+    this.tree.forEach((item) => {
+      output[item.name] = serializeItem(item);
+    });
+
+    return output;
+  }
+
+  parseFolder(data = {}, name, host = null) {
+    var type =
+      data.type ||
+      (typeof data.data === "string" || typeof data.content === "string"
+        ? "text"
+        : "folder");
+    var item = new Item({
+      type: type,
       name: data.name || name,
       info: data.info,
       host: host,
@@ -118,10 +236,10 @@ export class Bin {
     }
 
     if (item.type !== "folder") {
-      item.setData(data.data);
+      item.setData(data.data ?? data.content ?? "");
     } else {
       var fdata = [];
-      if (data.data) {
+      if (data.data && typeof data.data === "object") {
         for (const key of Object.keys(data.data)) {
           fdata.push(this.parseFolder(data.data[key], key, item));
         }

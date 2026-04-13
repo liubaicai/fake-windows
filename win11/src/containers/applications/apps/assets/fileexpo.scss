@@ -287,6 +287,28 @@
       }
     }
 
+    &[data-size="list"] {
+      --cwidth: 100%;
+      grid-template-columns: 1fr;
+      grid-row-gap: 2px;
+      padding: 0.25em 0.5em 0.5em;
+
+      .conticon {
+        padding: 0.45em 0.65em;
+        margin: 0;
+        border-radius: 4px;
+
+        span {
+          max-height: none;
+          text-align: left;
+          margin-left: 0.75em;
+          display: block;
+          -webkit-line-clamp: unset;
+          -webkit-box-orient: unset;
+        }
+      }
+    }
+
     .conticon {
       align-self: flex-start;
     }

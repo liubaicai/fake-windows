@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as Actions from "../../actions";
-import { getTreeValue } from "../../actions";
+import { getTreeValue, handleFileOpen } from "../../actions";
 import { sendActionLog } from "../../utils/log";
 import { Icon } from "../../utils/general";
 import Battery from "../shared/Battery";
@@ -15,12 +15,24 @@ export * from "./widget";
 export const DesktopApp = () => {
   const deskApps = useSelector((state) => {
     var arr = { ...state.desktop };
-    var tmpApps = [...arr.apps];
+    var tmpApps = [...arr.apps].map((app) => ({
+      ...app,
+      entryType: "app",
+    }));
+    var desktopId = state.files.data.special["%desktop%"];
+    var desktopFolder = desktopId ? state.files.data.getId(desktopId) : null;
+    var tmpItems = (desktopFolder?.data || []).map((item) => ({
+      ...item,
+      entryType: "file",
+    }));
+    var tmpEntries = [...tmpApps, ...tmpItems];
 
     if (arr.sort == "name") {
-      tmpApps.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
+      tmpEntries.sort((a, b) =>
+        a.name > b.name ? 1 : b.name > a.name ? -1 : 0,
+      );
     } else if (arr.sort == "size") {
-      tmpApps.sort((a, b) => {
+      tmpEntries.sort((a, b) => {
         var anm = a.name,
           bnm = b.name;
 
@@ -30,7 +42,7 @@ export const DesktopApp = () => {
           : -1;
       });
     } else if (arr.sort == "date") {
-      tmpApps.sort((a, b) => {
+      tmpEntries.sort((a, b) => {
         var anm = a.name,
           bnm = b.name;
         var anml = anm.length,
@@ -42,28 +54,53 @@ export const DesktopApp = () => {
       });
     }
 
-    arr.apps = tmpApps;
+    arr.entries = tmpEntries;
     return arr;
   });
-  const dispatch = useDispatch();
 
   return (
     <div className="desktopCont">
       {!deskApps.hide &&
-        deskApps.apps.map((app, i) => {
+        deskApps.entries.map((item, i) => {
+          if (item.entryType == "app") {
+            return (
+              <div
+                key={i}
+                className="dskApp"
+                tabIndex={0}
+                data-menu="app"
+                data-action={item.action}
+                data-payload={item.payload || "full"}
+              >
+                <Icon
+                  click={item.action}
+                  className="dskIcon prtclk"
+                  src={item.icon}
+                  payload={item.payload || "full"}
+                  pr
+                  width={Math.round(deskApps.size * 36)}
+                  menu="app"
+                />
+                <div className="appName">{item.name}</div>
+              </div>
+            );
+          }
+
           return (
-            // to allow it to be focusable (:focus)
-            <div key={i} className="dskApp" tabIndex={0}>
+            <div
+              key={item.id}
+              className="dskApp"
+              tabIndex={0}
+              data-menu="fsitem"
+              data-id={item.id}
+              onDoubleClick={() => handleFileOpen(item.id)}
+            >
               <Icon
-                click={app.action}
-                className="dskIcon prtclk"
-                src={app.icon}
-                payload={app.payload || "full"}
-                pr
+                className="dskIcon"
+                src={`win/${item.info.icon}`}
                 width={Math.round(deskApps.size * 36)}
-                menu="app"
               />
-              <div className="appName">{app.name}</div>
+              <div className="appName">{item.name}</div>
             </div>
           );
         })}
